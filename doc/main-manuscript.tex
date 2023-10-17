@@ -1,0 +1,601 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Physical properties of odorants affect behavior of trained detection dogs during close-quarters searches},
+  pdfauthor={Daniel Mejia1, Lydia Burnett2, Nicholas Hebdon1, Peter Stevens3, Alexis Shiber1, Clay Cranston1, Lauryn DeGreeff2, and Lindsay D. Waldrop1},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Physical properties of odorants affect behavior of trained detection dogs during close-quarters searches}
+\author{Daniel Mejia\textsuperscript{1}, Lydia Burnett\textsuperscript{2}, Nicholas Hebdon\textsuperscript{1}, Peter Stevens\textsuperscript{3}, Alexis Shiber\textsuperscript{1}, Clay Cranston\textsuperscript{1}, Lauryn DeGreeff\textsuperscript{2}, and Lindsay D. Waldrop\textsuperscript{1}}
+\date{2023-10-17}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Schmid College of Science and Technology, Chapman University
+\item
+  Global Forensic and Justice Center and Department of Chemistry and Biochemistry, Florida International University
+\item
+  The Scentsable K9, El Cajon, CA
+\end{enumerate}
+
+Corresponding author: L.D. Waldrop \href{mailto:waldrop@chapman.edu}{\nolinkurl{waldrop@chapman.edu}}
+
+\hypertarget{abstract}{%
+\subsection{Abstract}\label{abstract}}
+
+Trained detection dogs have a unique ability to find the sources of target odors in complex fluid environments. How dogs derive information about the source of an odor from an odor plume comprised of odorants with different physical properties, such as diffusivity, is currently unknown. Two volatile chemicals associated with explosive detection, ammonia (NH\textsubscript{3}, derived from ammonium nitrate-based explosives) and 2-ethyl-1-hexanol (2E1H, associated with composition C4 plastic explosives) were used to ascertain the effects of the physical properties of odorants on the search behavior and motion of trained dogs. NH\textsubscript{3} has a diffusivity 3.6 times that of 2E1H. Fourteen sport-detection dogs were recruited to train on each target odorant using controlled odor mimic permeation systems as training aids over six weeks and then tested in a controlled-environment search trial where behavior, motion, and search success were analyzed. Our results indicate the target-odorant influences search motion and time spent in the stages of searching, with dogs spending more time in larger areas while localizing NH\textsubscript{3}. This aligns with the greater diffusivity of NH\textsubscript{3} driving diffusion-dominated odor transport when dogs are close to the odor source in contrast to the advection-driven transport of 2E1H at the same distances.
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+Dogs are trained to locate items of interest via the detection of chemical cues (odors), including contraband, arms, explosives, disease, and humans\textsuperscript{1--7}. Trained operational dogs are a key feature of many security and law enforcement programs, despite the cost and difficulty of selecting, training, and maintaining them\textsuperscript{8,9}. Technology of artificial sensors now rivals the sensitivity of a dog's nose, yet dogs continue to out perform these sensors in their superior selectivity and due to their ability to interpret the complex fluid problem of locating a target odor's source\textsuperscript{1--3,10,11}.
+
+To find the source of an odor, dogs must search an odor plume that is created by the interactions between an odor source and the environment\textsuperscript{2,12,13}. The odor, and its individual odorants, can emanate into the air in two ways: simple diffusion or bulk fluid transport by air currents (advection). Odor diffuses from the source into the surrounding air and is carried away from the source via air currents\textsuperscript{13,14}. Air shearing across itself forms high-concentration filaments of odor in eddies, which sometimes resemble long, thin ribbons. Air swirls, breaks, and translates these ribbons. Diffusion spreads odors between layers of air in eddies, softening the edges of the odor filaments\textsuperscript{13,15}. Both environmental features, such as wind and objects in the area, and the physical properties of an odorant, such as diffusivity, can impact the distribution and concentration of the plume's odor filaments\textsuperscript{13,16}.
+
+When a dog uses olfaction to investigate a plume, it samples the plume by sniffing or taking in discrete volumes of the air immediately surrounding its nose\textsuperscript{2,17}. The signals that the dog encounters at the scale of its nose are intermittent; odor is contained in high-concentration filaments which the dog samples between low or no odor samples\textsuperscript{11,15}. Thus, odor information from a plume is complex in space and time and not a steady concentration gradient from start to source\textsuperscript{2,12,13}.
+
+Dogs must derive enough information from sniffing within a plume to find the source of an odor from a long distance to nearby the source. Dogs and other animals use two sets of behaviors during a search to gather information from an intermittent odor plume: casting and localizing\textsuperscript{2,18}. Casting is the appearance of zig-zagging in moths and crabs, constant turning in fish and birds, or head turning in mice and dogs\textsuperscript{2,12,18--22}. Casting typically occurs far from the source and allows the animal to enter, exit, and re-enter the edges of the plume, acquiring information on the odor's source from the spatial and temporal patterns of signals as well as flow direction and speed\textsuperscript{18--20,23,24}. Once very close to the source, these signals become less reliable and animals switch to localizing behaviors to determine the exact position of the odor source\textsuperscript{11,18,25,26}.
+
+To understand the balance between these two searching stages, the temporal and spatial shape of the plume and how it develops at a distance from the source is important. The shape of the plume depends on both advection and diffusion, which can influence the way odor moves local to the source. The Péclet number describes the ratio between advection and diffusion in odor transport: \(Pe = UL/D\), where \(U\) is the external flow speed, \(L\) is a characteristic length, and \(D\) is the diffusion coefficient of the odorant. When considering transport of odor far from the source (\(L\) is large), the \(Pe\) is much greater than one, indicating that bulk air movement is the primary mode of transport and differences in diffusivity have little importance. When considering close-quarters searching, characteristic lengths would be much smaller. Here, even moderate differences in diffusivity between odorants can drive \(Pe\) below one, indicating diffusion-driven transport (Table \ref{tab:pe-table}).
+
+We know that environmental processes that affect advection can produce effects in search behavior and success in dogs that engage in long-distance searching\textsuperscript{3,27,28}, but there have been fewer studies investigating how an odor's physical properties may impact close-quarters searches. Many operational dogs engage in close-quarters searching for contraband and explosives in rooms or enclosed spaces or items, such as vehicles, packages, or luggage, where the dog begins its search close to the odor source. While odors of different physical properties can also affect search success of narcotics and explosive detection dogs\textsuperscript{1}, there has been no study on how these differences might affect the behavior and movement of dogs during the casting and localizing stages of active searches. Since these types of searches can have \(Pe < 1\), it is possible that odors of different diffusivities could impact the way dogs search and their success in close quarters.
+
+To investigate how the physical properties of odors can impact close-quarters searching and search success, we observed the unrestricted search behavior of trained dogs in a standardized search environment with one of two target odorants: ammonia (NH\textsubscript{3}) and 2-ethyl-1-hexanol (2E1H). These chemicals are important for detection of explosives, as they are the dominant odorants in the headspace of two common explosives (NH3 is a degradant of ammonium nitrate and 2E1H is associated with the plasticizers used in the plastic explosive, C4)\textsuperscript{1,29--33}. NH\textsubscript{3}'s diffusion coefficient is 3.6 times that of 2E1H (Table \ref{tab:pe-table})\textsuperscript{34--36}.
+
+We expected the behavior and motion of the dogs would differ between the two target odorants due to their physical properties, with movement distributed more widely during localizing NH\textsubscript{3}, where \(Pe < 1\). We also expected that behaviors associated with stress, such as lip licking, would occur more often during searches for NH\textsubscript{3} than 2E1H due to the unfamiliar plume characteristics produced by NH\textsubscript{3}.
+
+\begin{longtable}[]{@{}lccc@{}}
+\caption{\label{tab:pe-table}Estimated Péclet numbers (\(Pe\)) for different length scales where the flow speed (\(U\)) is 1 cm s\textsuperscript{-1} and the diffusion coefficients (\(D\)) are 0.0663 and 0.2403 cm\textsuperscript{2} s\textsuperscript{-1} for 2E1H and NH\textsubscript{3}, respectively.}\tabularnewline
+\toprule\noalign{}
+& Length, \(L\) (m) & \(Pe\) 2E1H & \(Pe\) NH3 \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Length, \(L\) (m) & \(Pe\) 2E1H & \(Pe\) NH3 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Far field & 10.0 & 151 & 41.6 \\
+Medium range & 1.0 & 15 & 4.0 \\
+Close quarters & 0.2 & 3 & 0.8 \\
+\end{longtable}
+
+\hypertarget{methods}{%
+\subsection{Methods}\label{methods}}
+
+\hypertarget{materials}{%
+\paragraph{Materials}\label{materials}}
+
+Ammonium hydroxide (Sigma-Aldrich) and 2-etyhyl-1-hexanol (Sigma-Aldrich) were selected as the two target odorants of interest due to differences in their physical properties (SI Table 1). In order to train the two different target odors, handlers were given controlled odor mimic permeation systems (COMPS) as training aids. COMPS are a tool that controls odor availability during training. For this study, each COMPS consists of 20 \(\mu\)L of analyte pipetted onto a 2 inch by 2 inch piece of cotton-blend gauze pad (Dukal, LLC) which was heat-sealed in a 2 by 3 inch plastic bag. The analyte is released at a rate determined by the thickness and surface area of the bag\textsuperscript{37}. In order to equalize the amount of 2E1H and ammonia presented to the canine during training, a 3 MIL low density polyethylene bag (LDPE; Uline) was used 2E1H and a 8 MIL LDPE bag (Uline) was used for ammonia. Non-target or distractor odorants were prepared in a similar way for methyl benzoate (Sigma-Aldrich; 3 MIL bag) and bromooctane (Sigma-Aldrich; 8 MIL bag).
+
+\hypertarget{participants}{%
+\subsubsection{Participants}\label{participants}}
+
+Fourteen civilian canines were recruited through the National Association of Canine Scent Work (NACSW)(TM). NACSW canines train to detect essential oils for competition. Canines recruited from Nosework 3 title or higher. Dogs at this level are trained to detect multiple odor sources, trials with blanks, and in various search situations. Three small dogs (\(< 30\) lbs) and eleven large dogs (\(\geq 30\) lbs) were included of all different breeds (SI Table 2). The handlers were not compensated for participation. During the training period, handlers logged the time in which they used each COMPS and were instructed to throw away the COMPS and open a new one after it was exposed to the air for a total of six hours. Handler-dog teams were given six weeks to train with the COMPS before participating in the trials. Each handler-dog team trained individually as they would for typical Nosework odor competitions. The study observed all federal, state, and local regulations on the use of vertebrate animals in research (FIU IACUC protocol \#201314).
+
+\hypertarget{experimental-setup-and-procedure}{%
+\subsubsection{Experimental Setup and Procedure}\label{experimental-setup-and-procedure}}
+
+The trial was held in Huntington Beach, California in February, 2023 at a dog training facility. Two plywood trials walls were set up in the middle of each location (SI Figure 1). The walls consisted of three four foot by four foot panels of 1/2 inch plywood with two inch by three inch studs that were connected in a C pattern, the center panel of which contained four imprinting holes (3'' interior, 4'' exterior ABS toilet flange; OATEY) spaced seven inches horizontally apart. One wall was for large dogs where the imprinting holes were placed 16 inches on center from ground; another was for small dogs and had the holes spaced seven inches on center from the ground. Each hole presented a single odorant to the dogs through a small opening on a plastic PVC cap. One COMPS was placed in three of the four holes, containing one of two distracting odorants (either methyl benzoate or bromooctane) or one of the two target odorant (either 2E1H or NH\textsubscript{3}). A fourth hole had no odor (blank). For additional details, see supplementary information.
+
+COMPS were placed in the imprinting devices five to ten minutes before dogs were allowed to interact with the wall. Dogs were then run consecutively. No special effort was made to reset or control the odor plume from the wall between dogs. After each run with a target odor, distracting-odor COMPS were replaced. The white, PVC cap and ABS imprinting hole were replaced between 2E1H and NH3 to limit cross-contamination between target odors. A 15- to 20-minute period between runs with each target odor was given to allow the previous odor plumes to dissipate.
+
+Dogs were allowed to search a similar imprinting wall with a Nosework odor source before and after each experimental run. Each dog was sent to their corresponding wall twice, once where the target odor was NH\textsubscript{3} and the other when it was 2E1H. Two observers remained behind the dog and handler dyad while they were sent to the corresponding wall to note observations and to coach the handler, if needed. The handlers were blind to which hole contained the target odor. The handler was instructed to search the wall and indicate if their dog alerted to the location of the odor source. Once the dog had searched the wall and either alerted to the target odor or had worked the wall sufficiently, the dog-handler team was exited the facility. To assess whether the dogs were more successful at locating one odor or another, the successful versus unsuccessful alerts were noted by both observers during each run.
+
+\hypertarget{kinematic-analysis}{%
+\subsubsection{Kinematic Analysis}\label{kinematic-analysis}}
+
+Two video cameras (GoPro Hero 8 Black, GoPro, San Mateo, CA) were placed in view of the front of the wall where dogs interacted with odors, one above the holes and one to the right side of the trial wall, resulting in a top view and side view, respectively (SI Fig. 2). Calibration footage was taken each time the cameras were initially set up or moved. For additional details, see supplementary information.
+
+Movements of dogs during the search were quantified using the tracking software DLTdv8\textsuperscript{38}. Two points on the dogs' heads (the middle of the tip of the nose, in between the dogs' eyes) were digitized by hand in each frame of the two synced video views in DLTdv8. The two dimensional points from each video view were then used with easyWand calibration to calculate the three-dimensional position of each digitized point\textsuperscript{39}. Three-dimensional points were then exported for further analysis using custom software in R version 4.3.1\textsuperscript{40} (See data availability for location of code used for analyses). The same two coders for the behavioral analysis completed the kinematic analysis, with one coder acting as a confirmatory judge of the first coder's analysis.
+
+\hypertarget{behavioral-analysis}{%
+\subsubsection{Behavioral Analysis}\label{behavioral-analysis}}
+
+To analyze the behaviors occurring along the search path, two ethograms were created to code behavioral stages related to searching and other, relevant individual behaviors that occurred during the search. Each ethogram was created using the Behavioral Observation Research Interactive Software (BORIS) and coded using the same software\textsuperscript{41}. Behavior states and individual behaviors were scored by two trained observers (one for behavior states, one for individual behaviors).
+
+Using a combination of classical and operant conditioning, dogs are trained to behave a certain way once they have detected a target odor and are as close to the source of that odor as they can possibly get. The use of a detection dog and location of one or more of the target odors will typically go as follows: (1) The dog is deployed with a search command. (2) \textbf{Casting stage}: the dog will start sampling the air currents trying to locate an odor plume (i.e., ``scent cone''). As air current carries the target odor, dogs locate the edges of the odor plume and try to find the source. The dog will move its head from side to side trying to locate the edges of the odor plume and the odor source. (3) \textbf{Localizing stage}: once the dog has detected the odor plume, it engages in noticeable changes of behavior. The dog often becomes visibly excited with its bodies becoming more rigid, changes in rates of breathing, and appear more focused. The dog will close its mouth, very focused sniffing occurs, and sniffing frequency increases. Sometimes the dog will appear to become frantic or engage in a sudden turn of the head. (4) \textbf{Alert phase}: after the dog has successfully located the source of the odor, the dog has been conditioned to perform a specific behavior, often called a Trained Final Response (TFR). The most common TFR's in professional detection work is a sit or freeze and in civilian sport detection is a head turn and look at the handler. The dog is then rewarded with a reinforcer.
+
+Behavioral stages were defined stages that correspond to the search stages explained above: casting, localizing, and alerting. An off-task stage was also added for times where the dog was not engaged in the search task. The current literature has agreed upon the three defined search phases in dogs defined in Thesen et al.\textsuperscript{42} (initial, deciding, and tracking phases), where each phase differs from the other based on speed, sniff frequency, and time spent sniffing. The addition and use of distinct casting and localizing stages in the current study bridges the gap in terminology from tracking and trailing to the wider olfactory literature, as well as remaining consistent with the stages outlined in Thesen et al.\textsuperscript{2,11,12,18--22,26,42}. Therefore, the terms used in the current study better classify and describe the search stages dogs iterate through as they navigate the odor plumes they search.
+
+Individual behaviors were defined as distinct behaviors displayed independently of search stage and collected as both the number of incidents and amount of time the behaviors were displayed. The behaviors were selected after observations made during the trials and because they have been linked with psychological and physiological states of being, such as confusion, avoidance, anxiousness, focus, and alertness\textsuperscript{42--44}. Twelve individual behaviors were chosen and coded (see SI Table 3 for definitions). All behaviors fell into two major categories of physiological stress: focused/attentive behavior, which can also be classified into the greater category of eustress, or distress.
+
+In BORIS, search stages were scored as start/stop during the timeline of the search. The individual behaviors were collected as both count data and amount of time the behaviors were displayed. Across the two trial dates, fifty-five videos were coded twice, once with each ethogram. The video was coded for the entire time the dog was fully visible within the video. There was one trained coder for each ethogram. Once the videos were coded, the two behavior types were paired statistically so that the appropriate individual behaviors fell within the relevant behavioral state according to video timing.
+
+\hypertarget{statistical-analysis}{%
+\subsubsection{Statistical analysis}\label{statistical-analysis}}
+
+Statistical analyses of search stage and behavior data was performed in R version 4.3.1\textsuperscript{40}. Data for comparison were tested for normality with a Shapiro-Wilk test and for significance using Welch's t-test, Wilcoxon rank-sum test, or signed rank test, noted along with statistical values reported below. P-values were adjusted for multiple comparisons using a Bonferroni correction. To compare where the dogs concentrated their efforts during different types of behavior, a cluster comparison for two behavior types (casting and localizing) was performed. Clusters were identified with a k-means analysis using the k-means function in base R. K-means clustering is a method that reduces the within cluster variance relative to the clusters' mean for a specified number of groups\textsuperscript{45}. K-means quantification requires the user to specify the number of clusters to be found. In this analysis a cluster would equate to a high density zone of a given behavior. For our experimental configuration this was set to five, one per odor hole and one additional for background/off-wall behavior. To evaluate the accuracy of this clustering scheme for each chemical relative to our expectation we then calculated the gap statistic of each cluster using the function \texttt{clusGap} from cluster package was then calculated\textsuperscript{46}. The gap statistic summarized the distance of the pooled sum of the squares for a cluster relative to that data under a null distribution\textsuperscript{47}. For additional details, see supplementary information.
+
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
+
+\hypertarget{target-odor-affects-search-patterns-of-dogs}{%
+\subsubsection{Target odor affects search patterns of dogs}\label{target-odor-affects-search-patterns-of-dogs}}
+
+\begin{figure}
+\centering
+\includegraphics{main-manuscript_files/figure-latex/frontwall-casting-1.pdf}
+\caption{\label{fig:frontwall-casting}Point-density plots (a and b) and k-means clustering plots (c and d) of the front view of trial wall during casting stage for 2E1H (a, c) and NH\textsubscript{3} (b, d). Location of imprinting source holes marked with colored circles (red indicates location of target odorant, blue are distractors, gray is blank).}
+\end{figure}
+
+The casting stage describes the active search of a dog at the edge of a plume before it begins localizing to narrow down the search field to the odor's source. It often involves larger movements and more changes of direction in order to cover a larger area and encounter infrequent odor signals. Fig. \ref{fig:frontwall-casting} show the density maps of casting across all runs for both target odors. The patterns between the target odors differed significantly, with a difference in the distance of the nose to the target odor source (Fig. \ref{fig:hole-times}A, means: \(0.643\) m and \(0.494\) m for 2E1H and NH\textsubscript{3}, respectively; \(t = -2.724\); \(p = 0.047\)). The time spent engaging in casting, however, did not differ. Casting occurred further from the face of the wall and spread across the face of the wall (Fig. \ref{fig:frontwall-casting}), although dogs were found to sniff below the holes more for NH\textsubscript{3} than 2E1H. K-mean gap scores for clusters were overall low for both 2E1H (0.48 to 0.71) and NH\textsubscript{3} (0.57 to 0.7).
+
+\begin{figure}
+\centering
+\includegraphics{main-manuscript_files/figure-latex/frontwall-detailing-1.pdf}
+\caption{\label{fig:frontwall-detailing}Point-density plots (a and b) and k-means clustering plots (c and d) of the front view of trial wall during localizing stage for 2E1H (a, c) and NH\textsubscript{3} (b, d). Location of imprinting source holes marked with colored circles (red indicates location of target odorant, blue are distractors, gray is blank).}
+\end{figure}
+
+Localizing describes the behavior in which a dog searches a smaller area to narrow down the position of the odor source. This smaller search area is reflected in the localizing point density of 2E1H (Fig. \ref{fig:frontwall-detailing}A), with the searching highly localized to the holes of the wall and little deviation from the wall's face. Clustering is highly robust and four of the groups correspond to the four source holes of the wall (Fig. \ref{fig:frontwall-detailing}C) with gap scores of 0.66 to 1.04. In contrast, NH\textsubscript{3} localizing, while close to the surface of the wall, was spread both above and below the holes, showing clusters that were less distinct and not associated with individual holes (gap scores: 0.47 to 0.68). Dogs were on average closer to the target source during localizing NH\textsubscript{3} (Fig. \ref{fig:hole-times}A) compared to 2E1H (means: \(0.352\) m and \(0.511\) m for 2E1H and NH\textsubscript{3}, respectively; \(t = 2.938\); \(p = 0.033\)). Dogs also spent a longer time engaged in localizing for NH\textsubscript{3} than 2E1H (Fig. \ref{fig:hole-times}B) (Welch Two Sample t-test; means: \(7.09\) s, \(3.72\) s, \(p = 0.048\)). With this, the time dogs engaged in casting as opposed to localizing NH\textsubscript{3} did not differ (Wilcoxon rank sum exact test, \(W = 143\), \(p = 0.079\)), yet the dogs spent significantly less time localizing 2E1H than casting for it (Welch Two Sample t-test; means: \(3.72\) s, \(12.16\) s, \(p = 0\)).
+
+\begin{figure}
+\centering
+\includegraphics{main-manuscript_files/figure-latex/hole-times-1.pdf}
+\caption{\label{fig:hole-times}Mean distance the dogs occupied in the casting and localizing stages of search (a) as well as the mean time they spent within 10 cm of the source of each chemical (b). * represents a comparison where the p \textless{} 0.05.}
+\end{figure}
+
+\hypertarget{dog-behavior-during-search-does-not-change-with-target-odorant}{%
+\subsubsection{Dog behavior during search does not change with target odorant}\label{dog-behavior-during-search-does-not-change-with-target-odorant}}
+
+\begin{figure}
+\centering
+\includegraphics{main-manuscript_files/figure-latex/indiv-behavior-times-1.pdf}
+\caption{\label{fig:indiv-behavior-times}Mean time spent showing each of four behaviors (a) and the number of times the dogs displayed each of eight other behaviors (b).}
+\end{figure}
+
+When looking at both the counts and time spent displaying twelve behaviors associated with searching, focus, stress, and alerts, no significant differences were found between the two target odors. In Fig. \ref{fig:indiv-behavior-times}A, the times the dogs spend displaying four state behaviors was not found to be statistically different based on the target odor (Two-Way ANOVA, DFs = \(1, 3\); F-statistics = \(0.57, 0.339\); p values = \(0.453, 0.797\)). No individual comparison between target odor within a specific state were significant. The dogs did display a slight trend towards a difference when looking at the handler based on the target odor. However, a small sample size limited the statistical power of this comparison.
+
+Furthermore, the time spent sniffing for both target odors did not differ statistically (Welch Two Sample t-test; means: \(11.71\) s, \(11.572\) s, \(p = 1\)), therefore demonstrating that the dogs spent about equal amounts of time searching for the two odors.
+
+The counts of individual behaviors, including those that signify states of being, also did not result in any significant differences in how the dogs searched for the target odors (Fig. \ref{fig:indiv-behavior-times}B). While the number of times the dogs turned their heads towards their handlers seemed to trend towards occurring more for NH\textsubscript{3}, the result was also insignificant (\(p = 0.356\)). These results suggest there was no difference in states of being for dogs engaged in searching for either target odor.
+
+\hypertarget{search-success-changes-with-target-odorant}{%
+\subsubsection{Search success changes with target odorant}\label{search-success-changes-with-target-odorant}}
+
+\begin{figure}
+\centering
+\includegraphics{main-manuscript_files/figure-latex/search-times-1.pdf}
+\caption{\label{fig:search-times}Mean search times between types of runs (b) against alert success for both chemicals (a). Each point represents the mean for a single dog search event b.}
+\end{figure}
+
+If the behaviors and kinematics along the sniff path changed depending on the target odor, it would follow that the search success would also differ (see Fig. \ref{fig:search-times}A). The dogs were more successful at finding the NH\textsubscript{3} source over 2E1H (Fisher's exact test, \(p = 0.002\); Fig. \ref{fig:search-times}A). With this search success difference, a difference in the total time engaged for each target odor between successful and unsuccessful was not found. The successful searches did not differ in time from the unsuccessful searches for both chemicals (Wilcoxon rank sum exact test, \(W = 19\), \(p = 0.769\) for NH\textsubscript{3} and \(W = 15\), \(p = 0.659\) for 2E1H) or between the chemicals (Wilcoxon rank sum exact test, \(W = 13\), \(p = 0.769\) for successful searches and \(W = 20\), \(p = 0.84\) for unsuccessful searches; Fig. \ref{fig:search-times}B).
+
+\hypertarget{discussion}{%
+\subsection{Discussion}\label{discussion}}
+
+The target odorants in this study possess differences in physical properties such that during close-quarters searching transport of odorant would be dominated by advection during casting for both odorants, and then diffusion for NH\textsubscript{3} and advection for 2E1H during localizing (Table \ref{tab:pe-table}). We predicted that this would result in significant differences in the way dogs would search odor plumes created by each target odorant, displayed by differences in movement, behavior stages of the search, and individual behaviors associated with focus and distress.
+
+During casting, dogs approached the wall and worked between 0.2 and 1 m away from the wall (\(x\) axis for Fig. \ref{fig:frontwall-detailing}). The dogs were further away as they approached the NH\textsubscript{3} source, although the distribution of movement and time spent casting were similar for both chemicals (Fig. \ref{fig:frontwall-casting} and \ref{fig:hole-times}B). The mean distance of the dogs' noses were further away from the location of the source for NH\textsubscript{3} than 2E1H (Figs. \ref{fig:hole-times}A), although the distribution of movement and time spent casting were similar for both chemicals (Fig. \ref{fig:frontwall-casting} and \ref{fig:hole-times}B).
+
+When dogs transitioned to localizing, the \(Pe\) dropped to less than 1 for NH\textsubscript{3}, signifying a diffusion-based transport at this distance from the source. In this search stage, the dogs patterned their localizing behaviors differently for each target odorant, tending to search each imprinting hole more thoroughly and closely for 2E1H while hovering around the source hole for NH\textsubscript{3} (Fig. \ref{fig:frontwall-detailing}C \& D). This behavior resulted in a closer mean distance between the dogs' noses and the odor source during localizing NH\textsubscript{3} compared to 2E1H or when casting for NH\textsubscript{3} (Fig. \ref{fig:hole-times}A). Additionally, the dogs spent more time closer to the source for NH\textsubscript{3} than 2E1H (Figs. \ref{fig:hole-times}B).
+
+Furthermore, weather conditions at the trial were humid (80\% relative humidity). In the presence of water vapor, NH\textsubscript{3} forms a hydrated complex and becomes heavier than air. Accordingly, there was a vertical shift downward below the imprinting holes for both casting and localizing for NH\textsubscript{3} as compared to 2E1H (Figs. \ref{fig:frontwall-casting} \& \ref{fig:frontwall-detailing}), reflecting this property of NH\textsubscript{3}. The same was not observed for 2E1H.
+
+Although the movements of dogs during the searches differed, individual behaviors did not (Fig. \ref{fig:indiv-behavior-times}). Individual behaviors were selected based on their connection with states of focus and distress\textsuperscript{42--44}. Results indicated that dogs engaged in the same set of behaviors for each chemical, maintaining similar levels of focus and distress implying that the dogs were neither averse to the target odorants nor experienced different levels of distress during the trial searches. There was a slight, but insignificant, trend toward dogs looking at their handlers during the NH\textsubscript{3} search unrelated to alert trained final responses, which may have reached significance with a larger sample size.
+
+We predicted that the difference in physical properties between the two target odorants would lead to dogs having more success at finding 2E1H as it is more similar to the Nosework odors that the dogs had been previously trained to locate. Nosework odors, the essential oils of birch, anise, and clove, are more similar in physical properties to 2E1H; consisting broadly of turpenes which have more similar vapor pressures and diffusivities to 2E1H compared to NH\textsubscript{3}. However, dogs successfully alerted on NH\textsubscript{3} significantly more often than 2E1H (Fig. \ref{fig:search-times}A) while spending similar amounts of time searching for each odor (Fig. \ref{fig:search-times}B).
+
+Together, these results suggest that the physical properties of NH\textsubscript{3} and 2E1H influence the movement of the dogs during search. Many handlers reported that their dogs seemed to react differently in movement and search patterning during training with NH\textsubscript{3} as compared to training with 2E1H. NH\textsubscript{3} seemed to present a novel challenge for the dogs. The differences in plume characteristics between the two target odorants in this study made it easier for dogs to identify the edges of the plume during casting for NH\textsubscript{3} but required the dogs to allocate different amounts of time and effort between the two odorants during localizing. It also required searching in different areas with different movements in response to the difference in plume characteristics between NH\textsubscript{3} and 2E1H.
+
+When very close to the source, the differences in \(Pe\) between NH\textsubscript{3} and 2E1H span \(Pe=1\), the critical ratio that determines the dominant mode of transport for each odorant (Table \ref{tab:pe-table}). Other studies investigating odor capture by crabs across this \(Pe\) value between air and water found support for morphological and kinematic differences being a result of performance differences of capture in the two fluid environments\textsuperscript{48,49}. This transition corresponds roughly to the behavioral transition between casting and localizing, observed by many studies that show distinct changes in behavior when an animal is so close to the source that the intermittent cues of a plume become less reliable\textsuperscript{18,24,25}. Our results are consistent with these observations and suggest that the target odorant's diffusivity can drive where and when this transition occurs for dogs during a search.
+
+Few studies have investigated kinematic or behavioral changes of animals engaged in searching for odorants of different physical properties. Most odors are a mixture of individual chemical odorants, each with their own physical properties\textsuperscript{25}. Many common explosives give off multiple chemical odorants, and when trained dogs are tested with odorants individually, they are less proficient in detection\textsuperscript{50,51}. Each odorant has individual physical properties, such as diffusion, which can influence the shape of the plume or the spatial and temporal pattern of signals delivered to dogs\textsuperscript{52--54}. It is possible that dogs use not only the spatial and temporal information from each odorant as it is transported in the plume, but also the changing chemical makeup of the odor that they capture during different stages of the search.
+
+Understanding that the dog's movements during a search will be different, while individual behaviors may not, is important for the handler when reading their dog's behavior during a search. Trained final responses are not the only signals handlers should learn to discriminate, the specific behaviors and movements of dogs during the search can be nuanced and indicate the stage of the search activity, the possible locations of sources, and possibly the type of odors. Better understand of differences in the search process can improve a handler's ability to intervene and guide the dog, communicate with other people, improve reliability, and maintain safety in a dangerous working environment\textsuperscript{4,29,55--58}.
+
+This novel exploration into the detailed ways that dogs search for odors based on the physical properties of odorants can also be useful for the wider investigation into and creation of artificial sensors. The awareness that search patterning is an effective tool for various targets without requiring a change in strategy is beneficial. Search patterns, such as the zig-zag and spiral search patterns, as well as other sniff searching information have been taken from the organic models and have been useful for biomimetic or bioinspired use in robotics work\textsuperscript{62}. The continued investigation into how animals search and how searching is influenced by various factors will aid in the growth of artificial sensors and their ability to discriminate and locate specific odors.
+
+Fourteen dogs participated and while this sample size was acceptable and gathered telling data, it may have also served as a limitation, as evidenced by a trend, and non-significant result for more time spent looking at the handler when searching for NH\textsubscript{3}. A larger sample size may have provided more statistically significant results for the study of individual behaviors and for alert success. With this, the dogs were only trained for six weeks on the target chemicals, and while there was a clear difference in their ability to and in how they searched for the odors, these differences may have been affected by the length and presence of training. Moreover, operational dogs were not utilized, instead, Nosework dogs registered through the National Association of Canine Scent Work\textsuperscript{TM} participated. This may have been a limitation as there may be behavioral or search pattern differences between operational and non-operational dogs, yet the use of non-operational dogs is consistent with the participant population of the wider literature\textsuperscript{21,55,63}. These limitations serve as a call for continued exploration on the subject to propel beneficial developments of canine searching for all operational capacities.
+
+The findings from the present study demonstrate that the physical properties of target odors affect the search behaviors of dogs, namely the kinematic motions used to search for odors. While individual behaviors along the search were not found to differ between the two odors, dogs searched widely around the source hole for NH\textsubscript{3}, while they consistently searched for 2E1H close to the imprinting holes. The results of the behavioral and kinematic analyses were concordant with the known fluid dynamic behavior of the target odors, thereby providing evidence that the physical properties of odors affect the search behavior of dogs. Future work should continue to study and seek to understand the behaviors along the search, including movement patterns and behaviors, to provide the operational and nose work communities with better information and tools for working with their canine partners.
+
+\hypertarget{acknowledgements}{%
+\subsection{Acknowledgements}\label{acknowledgements}}
+
+This study was funded by Office of Naval Research awards \#N00014-21-1-2347 (to L. Waldrop) and \#N00014-21-1-2873 (to L. DeGreeff). The authors wish to thank Brandi Bryant and Jenny Brackett of the The Hounds Grounds in Huntington Beach, CA for providing the venue for the trials; Amy Herot and Jill-Marie O'Brien from NASCW for help in recruiting participants; the dog-handler teams for donating their time and effort; and Monica Moljo, Alexa Ortega, Alexander Orlove, and Evan Hughes for helping at the trials.
+
+\hypertarget{author-contributions}{%
+\subsection{Author Contributions}\label{author-contributions}}
+
+\begin{itemize}
+\tightlist
+\item
+  DM: Ran trials, created ethogram, analyzed data, wrote manuscript
+\item
+  LB, NH: ran trials, analyzed data, wrote manuscript
+\item
+  PS: ran trials, wrote manuscript
+\item
+  AS,CC: analyzed kinematics, wrote manuscript
+\item
+  LD: conceived of idea, ran trials, wrote manuscript
+\item
+  LDW: conceived of idea, ran trials, analyzed data, wrote manuscript
+\end{itemize}
+
+\hypertarget{competing-interests-statement}{%
+\subsection{Competing Interests Statement}\label{competing-interests-statement}}
+
+No authors have no competing interests.
+
+\hypertarget{data-availability}{%
+\subsection{Data Availability}\label{data-availability}}
+
+All data and code used to produce results can be found on Github at \url{https://github.com/lindsaywaldrop/odor-plume-search}.
+
+\hypertarget{references}{%
+\subsection*{References}\label{references}}
+\addcontentsline{toc}{subsection}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-furton2001scientific}{}}%
+\CSLLeftMargin{1. }%
+\CSLRightInline{Furton, K. G. \& Myers, L. J. The scientific foundation and efficacy of the use of canines as chemical detectors for explosives. \emph{Talanta} \textbf{54}, 487--500 (2001).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-settles2005sniffers}{}}%
+\CSLLeftMargin{2. }%
+\CSLRightInline{Settles, G. S. Sniffers: Fluid-dynamic sampling for olfactory trace detection in nature and homeland security -- the 2004 freeman scholar lecture. \emph{Journal of Fluids Engineering} \textbf{127}, 189--218 (2005).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-cablk2008olfaction}{}}%
+\CSLLeftMargin{3. }%
+\CSLRightInline{Cablk, M. E., Sagebiel, J. C., Heaton, J. S. \& Valentin, C. Olfaction-based detection distance: A quantitative analysis of how far away dogs recognize tortoise odor and follow it to source. \emph{Sensors} \textbf{8}, 2208--2222 (2008).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-boedeker2012sniffer}{}}%
+\CSLLeftMargin{4. }%
+\CSLRightInline{Boedeker, E., Friedel, G. \& Walles, T. Sniffer dogs as part of a bimodal bionic research approach to develop a lung cancer screening. \emph{Interactive cardiovascular and thoracic surgery} \textbf{14}, 511--515 (2012).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wasser2012using}{}}%
+\CSLLeftMargin{5. }%
+\CSLRightInline{Wasser, S. K. \emph{et al.} Using detection dogs to conduct simultaneous surveys of northern spotted (\emph{{S}trix occidentalis caurina}) and barred owls (\emph{{S}trix varia}). \emph{PLOS ONE} \textbf{7}, 1--8 (2012).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-pemberton2013bloodhounds}{}}%
+\CSLLeftMargin{6. }%
+\CSLRightInline{Pemberton, N. {`{B}loodhounds as {D}etectives'} dogs, slum stench and late-victorian murder investigation. \emph{Cultural and Social History} \textbf{10}, 69--91 (2013).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-narayanasamy2023hide}{}}%
+\CSLLeftMargin{7. }%
+\CSLRightInline{Narayanasamy, S. S. \emph{et al.} Hide-and-sniff: Can anti-trafficking dogs detect obfuscated wildlife parts? \emph{Conservation Science and Practice} \textbf{5}, e12886 (2023).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-leighton2018solution}{}}%
+\CSLLeftMargin{8. }%
+\CSLRightInline{Leighton, E. A., Hare, E., Thomas, S., Waggoner, L. P. \& Otto, C. M. A solution for the shortage of detection dogs: A detector dog center of excellence and a cooperative breeding program. \emph{Frontiers in Veterinary Science} \textbf{5}, 284 (2018).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lazarowski2020selecting}{}}%
+\CSLLeftMargin{9. }%
+\CSLRightInline{Lazarowski, L. \emph{et al.} Selecting dogs for explosives detection: Behavioral characteristics. \emph{Frontiers in Veterinary Science} \textbf{7}, 10.3389/fvets.2020.00597 (2020).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-eu2013olfactory}{}}%
+\CSLLeftMargin{10. }%
+\CSLRightInline{Eu, K. S., Yap, K. M., Tee, T. H., Lim, S. Y. \& Chin, B. Y. Olfactory sensory system for odour plume sensing process by using quadrotor based flying sniffer robot. in \emph{2013 international conference on robotics, biomimetics, intelligent computational systems} 188--193 (IEEE, 2013).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-reddy2022olfactory}{}}%
+\CSLLeftMargin{11. }%
+\CSLRightInline{Reddy, G., Murthy, V. N. \& Vergassola, M. Olfactory sensing and navigation in turbulent environments. \emph{Annual Review of Condensed Matter Physics} \textbf{13}, 191--213 (2022).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-murlis1992odor}{}}%
+\CSLLeftMargin{12. }%
+\CSLRightInline{Murlis, J., Elkinton, J. S. \& Carde, R. T. Odor plumes and how insects use them. \emph{Annual review of entomology} \textbf{37}, 505--532 (1992).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-young2020odors}{}}%
+\CSLLeftMargin{13. }%
+\CSLRightInline{Young, B. D., Escalon, J. A. \& Mathew, D. Odors: From chemical structures to gaseous plumes. \emph{Neuroscience \& Biobehavioral Reviews} \textbf{111}, 19--29 (2020).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-elkinton1984odor}{}}%
+\CSLLeftMargin{14. }%
+\CSLRightInline{Elkinton, J. S. \& Cardé, R. T. Odor dispersion. in \emph{Chemical ecology of insects} 73--91 (Springer, 1984).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-koehl2001lobster}{}}%
+\CSLLeftMargin{15. }%
+\CSLRightInline{Koehl, M. \emph{et al.} Lobster sniffing: Antennule design and hydrodynamic filtering of information in an odor plume. \emph{Science} \textbf{294}, 1948--1951 (2001).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-koehl2006}{}}%
+\CSLLeftMargin{16. }%
+\CSLRightInline{Koehl, M. A. R. The fluid mechanics of arthropod sniffing in turbulent odor plumes. \emph{Chemical Senses} \textbf{31}, 93--105 (2006).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Dethier:1987}{}}%
+\CSLLeftMargin{17. }%
+\CSLRightInline{Dethier, V. G. Sniff, flick, and pulse: An appreciation of interruption. \emph{Proceedings of the American Philosophical Society} \textbf{131}, 159--176 (1987).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-weissburg1994odor}{}}%
+\CSLLeftMargin{18. }%
+\CSLRightInline{Weissburg, M. J. \& Zimmer-Faust, R. K. Odor plumes and how blue crabs use them in finding prey. \emph{Journal of Experimental Biology} \textbf{197}, 349--375 (1994).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-farkas1972chemical}{}}%
+\CSLLeftMargin{19. }%
+\CSLRightInline{Farkas, S. \& Shorey, H. Chemical trail-following by flying insects: A mechanism for orientation to a distant odor source. \emph{Science} \textbf{178}, 67--68 (1972).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-belanger1996adaptive}{}}%
+\CSLLeftMargin{20. }%
+\CSLRightInline{Belanger, J. H. \& Willis, M. A. Adaptive control of odor-guided locomotion: Behavioral flexibility as an antidote to environmental Unpredictability1. \emph{Adaptive Behavior} \textbf{4}, 217--253 (1996).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hepper2005many}{}}%
+\CSLLeftMargin{21. }%
+\CSLRightInline{Hepper, P. G. \& Wells, D. L. How many footsteps do dogs need to determine the direction of an odour trail? \emph{Chemical Senses} \textbf{30}, 291--298 (2005).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-prada2018birds}{}}%
+\CSLLeftMargin{22. }%
+\CSLRightInline{Prada, P. A. \& Furton, K. G. Birds and dogs: Toward a comparative perspective on odor use and detection. \emph{Frontiers in Veterinary Science} \textbf{5}, 188 (2018).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-porter2007mechanisms}{}}%
+\CSLLeftMargin{23. }%
+\CSLRightInline{Porter, J. \emph{et al.} Mechanisms of scent-tracking in humans. \emph{Nature neuroscience} \textbf{10}, 27--29 (2007).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-liu2020mouse}{}}%
+\CSLLeftMargin{24. }%
+\CSLRightInline{Liu, A. \emph{et al.} Mouse navigation strategies for odor source localization. \emph{Frontiers in Neuroscience} \textbf{14}, 218 (2020).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Ache:2005}{}}%
+\CSLLeftMargin{25. }%
+\CSLRightInline{Ache, B. W. \& Young, J. M. Olfaction: Diverse species, conserved principles. \emph{Neuron} \textbf{48}, 417--430 (2005).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-gire2016mice}{}}%
+\CSLLeftMargin{26. }%
+\CSLRightInline{Gire, D. H., Kapoor, V., Arrighi-Allisan, A., Seminara, A. \& Murthy, V. N. Mice develop efficient strategies for foraging and navigation using complex natural stimuli. \emph{Current Biology} \textbf{26}, 1261--1273 (2016).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ruzicka2012does}{}}%
+\CSLLeftMargin{27. }%
+\CSLRightInline{Ruzicka, R. E. \& Conover, M. R. Does weather or site characteristics influence the ability of scavengers to locate food? \emph{Ethology} \textbf{118}, 187--196 (2012).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-jinn2020ambient}{}}%
+\CSLLeftMargin{28. }%
+\CSLRightInline{Jinn, J., Connor, E. G. \& Jacobs, L. F. How ambient environment influences olfactory orientation in search and rescue dogs. \emph{Chemical senses} \textbf{45}, 625--634 (2020).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-southwest1973narcotic}{}}%
+\CSLLeftMargin{29. }%
+\CSLRightInline{Southwest Research Institute. \emph{Narcotic-explosive detector dogs}. (1973).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-katilie2019quantitative}{}}%
+\CSLLeftMargin{30. }%
+\CSLRightInline{Katilie, C. J., Simon, A. G. \& DeGreeff, L. E. Quantitative analysis of vaporous ammonia by online derivatization with gas chromatography-mass spectrometry with applications to ammonium nitrate-based explosives. \emph{Talanta} \textbf{193}, 87--92 (2019).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-gazit2021dogs}{}}%
+\CSLLeftMargin{31. }%
+\CSLRightInline{Gazit, I., Goldblatt, A., Grinstein, D. \& Terkel, J. Dogs can detect the individual odors in a mixture of explosives. \emph{Applied Animal Behaviour Science} \textbf{235}, 105212 (2021).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-degreeff2021headspace}{}}%
+\CSLLeftMargin{32. }%
+\CSLRightInline{DeGreeff, L. E. \& Peranich, K. Headspace analysis of ammonium nitrate variants and the effects of differing vapor profiles on canine detection. \emph{Forensic Chemistry} \textbf{25}, 100342 (2021).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-frank2022explosives}{}}%
+\CSLLeftMargin{33. }%
+\CSLRightInline{Frank Jr, K. J., Holness, H. K., Furton, K. G. \& DeGreeff, L. E. Explosives detection by dogs. in \emph{Counterterrorist detection techniques of explosives} 47--75 (Elsevier, 2022).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-spiller1989determination}{}}%
+\CSLLeftMargin{34. }%
+\CSLRightInline{Spiller, L. L. Determination of ammonia/air diffusion coefficient using nafion lined tube. \emph{Analytical letters} \textbf{22}, 2561--2573 (1989).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-guard1999chemical}{}}%
+\CSLLeftMargin{35. }%
+\CSLRightInline{Guard, U. C. Chemical hazard response information system (CHRIS)-hazardous chemical data. \emph{Commandant Instruction} \textbf{16465}, (1999).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wakayama2019comprehensive}{}}%
+\CSLLeftMargin{36. }%
+\CSLRightInline{Wakayama, T. \emph{et al.} Comprehensive review of 2-ethyl-1-hexanol as an indoor air pollutant. \emph{journal of Occupational Health} \textbf{61}, 19--35 (2019).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-simon2019}{}}%
+\CSLLeftMargin{37. }%
+\CSLRightInline{Simon, A. G. \emph{et al.} A method for controlled odor delivery in olfactory field-testing. \emph{Chemical Senses} \textbf{44}, 399--408 (2019).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hedrick2008software}{}}%
+\CSLLeftMargin{38. }%
+\CSLRightInline{Hedrick, T. L. Software techniques for two-and three-dimensional kinematic measurements of biological and biomimetic systems. \emph{Bioinspiration \& biomimetics} \textbf{3}, 034001 (2008).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-theriault2014protocol}{}}%
+\CSLLeftMargin{39. }%
+\CSLRightInline{Theriault, D. H. \emph{et al.} A protocol and calibration method for accurate multi-camera field videography. \emph{Journal of Experimental Biology} \textbf{217}, 1843--1848 (2014).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Rcoreteam}{}}%
+\CSLLeftMargin{40. }%
+\CSLRightInline{R Core Team. \emph{\href{https://www.R-project.org}{R: A language and environment for statistical computing}}. (R Foundation for Statistical Computing, 2022).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-friard2016boris}{}}%
+\CSLLeftMargin{41. }%
+\CSLRightInline{Friard, O. \& Gamba, M. {BORIS}: A free, versatile open-source event-logging software for video/audio coding and live observations. \emph{Methods in Ecology and Evolution} \textbf{7}, 1325--1330 (2016).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-thesen1993behaviour}{}}%
+\CSLLeftMargin{42. }%
+\CSLRightInline{Thesen, A., Steen, J. B. \& Dóving, K. B. Behaviour of dogs during olfactory tracking. \emph{Journal of Experimental Biology} \textbf{180}, 247--251 (1993).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bodnariu2008indicators}{}}%
+\CSLLeftMargin{43. }%
+\CSLRightInline{Bodnariu, A. \emph{et al.} Indicators of stress and stress assessment in dogs. \emph{Lucr Stiint Med Vet} \textbf{41}, 20--26 (2008).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-melco2020investigation}{}}%
+\CSLLeftMargin{44. }%
+\CSLRightInline{Melco, A. L., Goldman, L., Fine, A. H. \& Peralta, J. M. Investigation of physiological and behavioral responses in dogs participating in animal-assisted therapy with children diagnosed with attention-deficit hyperactivity disorder. \emph{Journal of Applied Animal Welfare Science} \textbf{23}, 10--28 (2020).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Hartigan_Wong_1979}{}}%
+\CSLLeftMargin{45. }%
+\CSLRightInline{Hartigan, J. A. \& Wong, M. A. \href{http://www.jstor.org/stable/2346830}{Algorithm AS 136: A k-means clustering algorithm}. \emph{Journal of the Royal Statistical Society. Series C (Applied Statistics)} \textbf{28}, 100--108 (1979).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-clusterpkg}{}}%
+\CSLLeftMargin{46. }%
+\CSLRightInline{Maechler, M., Rousseeuw, P., Struyf, A., Hubert, M. \& Hornik, K. \emph{\href{https://CRAN.R-project.org/package=cluster}{Cluster: Cluster analysis basics and extensions}}. vols Version 2.1.4 (2022).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tibshirani_estimating_2001}{}}%
+\CSLLeftMargin{47. }%
+\CSLRightInline{Tibshirani, R., Walther, G. \& Hastie, T. \href{https://doi.org/10.1111/1467-9868.00293}{Estimating the {Number} of {Clusters} in a {Data} {Set} {Via} the {Gap} {Statistic}}. \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology} \textbf{63}, 411--423 (2001).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Waldrop:bluehermit}{}}%
+\CSLLeftMargin{48. }%
+\CSLRightInline{Waldrop, L. D., Miller, L. A. \& Khatri, S. A tale of two antennules: The performance of crab odour-capture organs in air and water. \emph{Royal Society Interface} \textbf{13}, 20160615 (2016).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Waldrop:entmodel}{}}%
+\CSLLeftMargin{49. }%
+\CSLRightInline{Waldrop, L. D., He, Y. \& Khatri, S. \href{https://doi.org/10.1007/s10886-018-1017-2}{What can computational modeling tell us about the diversity of odor-capture structures in the {P}ancrustacea?} \emph{Journal of Chemical Ecology} \textbf{44}, 1084--1100 (2018).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lorenzo2003laboratory}{}}%
+\CSLLeftMargin{50. }%
+\CSLRightInline{Lorenzo, N. \emph{et al.} Laboratory and field experiments used to identify canis lupus var. Familiaris active odor signature chemicals from drugs, explosives, and humans. \emph{Analytical and bioanalytical chemistry} \textbf{376}, 1212--1224 (2003).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-harper2005identification}{}}%
+\CSLLeftMargin{51. }%
+\CSLRightInline{Harper, R. J., Almirall, J. R. \& Furton, K. G. Identification of dominant odor chemicals emanating from explosives for use in developing optimal training aid combinations and mimics for canine detection. \emph{Talanta} \textbf{67}, 313--327 (2005).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wang2021chemical}{}}%
+\CSLLeftMargin{52. }%
+\CSLRightInline{Wang, S. \emph{et al.} Chemical tomography in a fresh wildland fire plume: A large eddy simulation (LES) study. \emph{Journal of Geophysical Research: Atmospheres} \textbf{126}, e2021JD035203 (2021).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-heilman2014wildland}{}}%
+\CSLLeftMargin{53. }%
+\CSLRightInline{Heilman, W. E., Liu, Y., Urbanski, S., Kovalev, V. \& Mickler, R. Wildland fire emissions, carbon, and climate: Plume rise, atmospheric transport, and chemistry processes. \emph{Forest Ecology and Management} \textbf{317}, 70--79 (2014).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-asif2018air}{}}%
+\CSLLeftMargin{54. }%
+\CSLRightInline{Asif, Z., Chen, Z. \& Han, Y. Air quality modeling for effective environmental management in the mining region. \emph{Journal of the Air \& Waste Management Association} \textbf{68}, 1001--1014 (2018).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-jezierski2008information}{}}%
+\CSLLeftMargin{55. }%
+\CSLRightInline{Jezierski, T., Walczak, M. \& Górecka, A. Information-seeking behaviour of sniffer dogs during match-to-sample training in the scent lineup. \emph{Polish Psychological Bulletin} \textbf{39}, 71--80 (2008).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wells2003directional}{}}%
+\CSLLeftMargin{56. }%
+\CSLRightInline{Wells, D. L. \& Hepper, P. G. Directional tracking in the domestic dog, \emph{{C}anis familiaris}. \emph{Applied Animal Behaviour Science} \textbf{84}, 297--305 (2003).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-gazit2003explosives}{}}%
+\CSLLeftMargin{57. }%
+\CSLRightInline{Gazit, I. \& Terkel, J. Explosives detection by sniffer dogs following strenuous physical activity. \emph{Applied Animal Behaviour Science} \textbf{81}, 149--161 (2003).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-theuriexplosive}{}}%
+\CSLLeftMargin{58. }%
+\CSLRightInline{Theuri, D. W. The explosive sniffer dogs in security operations: An assessment of their performance in screening for concealed explosives. \emph{Africa Amani Journal} \textbf{7}, (2020).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lochmatter2007odor}{}}%
+\CSLLeftMargin{59. }%
+\CSLRightInline{Lochmatter, T., Raemy, X. \& Martinoli, A. \emph{Odor source localization with mobile robots}. \emph{Bulletin of the Swiss Society for Automatic Control} vol. 46 11--14 (2007).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-staymates2016biomimetic}{}}%
+\CSLLeftMargin{60. }%
+\CSLRightInline{Staymates, M. E. \emph{et al.} Biomimetic sniffing improves the detection performance of a 3D printed nose of a dog and a commercial trace vapor detector. \emph{Scientific reports} \textbf{6}, 36876 (2016).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-russell2001survey}{}}%
+\CSLLeftMargin{61. }%
+\CSLRightInline{Russell, R. A. Survey of robotic applications for odor-sensing technology. \emph{The International Journal of Robotics Research} \textbf{20}, 144--162 (2001).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hayes2002distributed}{}}%
+\CSLLeftMargin{62. }%
+\CSLRightInline{Hayes, A. T., Martinoli, A. \& Goodman, R. M. Distributed odor source localization. \emph{IEEE Sensors Journal} \textbf{2}, 260--271 (2002).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-concha2014using}{}}%
+\CSLLeftMargin{63. }%
+\CSLRightInline{Concha, A. \emph{et al.} Using sniffing behavior to differentiate true negative from false negative responses in trained scent-detection dogs. \emph{Chemical senses} \textbf{39}, 749--754 (2014).}
+
+\end{CSLReferences}
+
+\end{document}

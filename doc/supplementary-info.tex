@@ -1,0 +1,390 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Supplemental Information to `Physical properties of odors affect behavior of trained detection dogs during close-quarters searches'},
+  pdfauthor={Daniel Mejia1, Lydia Burnett2, Nicholas Hebdon1, Peter Stevens3, Alexis Shiber1, Clay Cranston1, Lauryn DeGreeff2, and Lindsay D. Waldrop1},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Supplemental Information to `Physical properties of odors affect behavior of trained detection dogs during close-quarters searches'}
+\author{Daniel Mejia\textsuperscript{1}, Lydia Burnett\textsuperscript{2}, Nicholas Hebdon\textsuperscript{1}, Peter Stevens\textsuperscript{3}, Alexis Shiber\textsuperscript{1}, Clay Cranston\textsuperscript{1}, Lauryn DeGreeff\textsuperscript{2}, and Lindsay D. Waldrop\textsuperscript{1}}
+\date{2023-10-17}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Schmid College of Science and Technology, Chapman University
+\item
+  Global Forensic and Justice Center and Department of Chemistry and Biochemistry, Florida International University
+\item
+  The Scentsable K9, El Cajon, CA
+\end{enumerate}
+
+Corresponding author: L.D. Waldrop \href{mailto:waldrop@chapman.edu}{\nolinkurl{waldrop@chapman.edu}}
+
+\hypertarget{methods}{%
+\subsection{Methods}\label{methods}}
+
+\hypertarget{materials}{%
+\paragraph{Materials}\label{materials}}
+
+Ammonium hydroxide (Sigma-Aldrich) and 2-etyhyl-1-hexanol (Sigma-Aldrich) were selected as the two target odorants of interest due to differences in their physical properties (Table \ref{tab:chem-table}).
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\label{tab:chem-table}Physical properties of the two target odorant chemicals, 2-ethyl-1-hexanol (2E1H) and ammonia (NH\(_3\)): molecular weight, diffusion coefficient and vapor pressure.}\tabularnewline
+\toprule\noalign{}
+Property & 2E1H & NH\(_3\) \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Property & 2E1H & NH\(_3\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Molecular weight (g mol\(^{-1}\)) & 130.23 & 17.031 \\
+Diffusion coefficent (cm\(^2\) s \(^{-1}\)) & 0.0663 & 0.2403 \\
+Vapor pressure (atm) & 0.000179 & 9.9 \\
+\end{longtable}
+
+In order to train the two different target odors, handlers were given controlled odor mimic permeation systems (COMPS) as training aids. COMPS are a tool that controls odor availability during training. For this study, each COMPS consists of 20 \(\mu\)L of analyte pipetted onto a 2 inch by 2 inch piece of cotton-blend gauze pad (Dukal, LLC) which was heat-sealed in a 2 by 3 inch plastic bag. The analyte is released at a rate determined by the thickness and surface area of the bag\textsuperscript{1}. In order to equalize the amount of 2E1H and ammonia presented to the canine during training, a 3 MIL low density polyethylene bag (LDPE; Uline) was used 2E1H and a 8 MIL LDPE bag (Uline) was used for ammonia. Non-target or distractor odorants were prepared in a similar way for methyl benzoate (Sigma-Aldrich; 3 MIL bag) and bromooctane (Sigma-Aldrich; 8 MIL bag).
+
+\hypertarget{participants}{%
+\subsubsection{Participants}\label{participants}}
+
+Fourteen civilian canines were recruited through the National Association of Canine Scent Work (NACSW)(TM). NACSW canines train to detect essential oils for competition. Canines recruited from Nosework 3 title or higher. Dogs at this level are trained to detect multiple odor sources, trials with blanks, and in various search situations.
+
+Three small dogs (\(< 30\) lbs) and eleven large dogs (\(\geq 30\) lbs) were included of all different breeds (Table \ref{tab:breed-table}). The handlers were not compensated for participation. The study observed all federal, state, and local regulations on the use of vertebrate animals in research (FIU IACUC protocol \#201314).
+
+\hypertarget{training}{%
+\subsubsection{Training}\label{training}}
+
+During the training period, handlers logged the time in which they used each COMPS and were instructed to throw away the COMPS and open a new one after it was exposed to the air for a total of six hours. Handler-dog teams were given six weeks to train with the COMPS before participating in the trials. Each handler-dog team trained individually as they would for typical Nosework odor competitions.
+
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\label{tab:breed-table}Dog Participant Information}\tabularnewline
+\toprule\noalign{}
+Dog number & Breed & Weight (lbs) \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Dog number & Breed & Weight (lbs) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Laborador retriever & 60 \\
+2 & Shetland Sheepdog & 30 \\
+9 & Belgian tervuren & 51 \\
+11 & Belgian malinois mix & 75 \\
+12 & English shepherd & 65 \\
+14 & Poodle & 38 \\
+15 & Pit bull terrier & 51 \\
+17 & Labrador retriever mix & 70 \\
+19 & Golden retriever & 60 \\
+20 & Boxer & 56 \\
+21 & Bull terrier & 57 \\
+22 & Chihuahua mix & 8 \\
+23 & Dachshund & 8 \\
+24 & Dachshund & 11 \\
+\end{longtable}
+
+\hypertarget{experimental-setup-and-procedure}{%
+\subsubsection{Experimental Setup and Procedure}\label{experimental-setup-and-procedure}}
+
+The trial was held in Huntington Beach, California in February, 2023 at a dog training facility (The Hounds Grounds). The trial was held during the morning, which was cloudy and rainy (temperature 17\(^{\circ}\)C, 80\% relative humidity). All HVAC remained off during the duration of the experiment such that the inside conditions were consistent with the outside conditions in terms of temperature and humidity. The main search area was separated from the front door by a four-foot high wooden wall, which limited much air movement in the main area when the outer doors opened and closed. Temperature, humidity, and wind conditions varied little during the three hours the trials were held.
+
+Two plywood trials walls were set up in the middle of each location (Figure \ref{fig:trial-box}). The walls consisted of three four foot by four foot panels of 1/2 inch plywood with two inch by three inch studs that were connected in a C pattern, the center panel of which contained four imprinting holes (3'' interior, 4'' exterior ABS toilet flange; OATEY) spaced seven inches horizontally apart. One wall was for large dogs where the imprinting holes were placed 16 inches on center from ground; another was for small dogs and had the holes spaced seven inches on center from the ground. Each hole presented a single odorant to the dogs through a small opening on a plastic PVC cap. One COMPS was placed in three of the four holes, containing one of two distracting odorants (either methyl benzoate or bromooctane) or one of the two target odorant (either 2E1H or NH\textsubscript{3}). A fourth hole had no odor (blank).
+
+COMPS were placed in the imprinting devices five to ten minutes before dogs were allowed to interact with the wall. Dogs were then run consecutively. No special effort was made to reset or control the odor plume from the wall between dogs. After each run with a target odor, distracting-odor COMPS were replaced. The white, PVC cap and ABS imprinting hole were replaced between 2E1H and NH3 to limit cross-contamination between target odors. A 15- to 20-minute period between runs with each target odor was given to allow the previous odor plumes to dissipate.
+
+Dogs were allowed to search a similar imprinting wall with a Nosework odor source before and after each experimental run. Each dog was sent to their corresponding wall twice, once where the target odor was NH\textsubscript{3} and the other when it was 2E1H. Two observers remained behind the dog and handler dyad while they were sent to the corresponding wall to note observations and to coach the handler, if needed. The handlers were blind to which hole contained the target odor. The handler was instructed to search the wall and indicate if their dog alerted to the location of the odor source. Once the dog had searched the wall and either alerted to the target odor or had worked the wall sufficiently, the dog-handler team was exited the facility. To assess whether the dogs were more successful at locating one odor or another, the successful versus unsuccessful alerts were noted by both observers during each run.
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{figures/trialbox2} \caption{Trial walls used for the experiment showing the relative placement of imprinting holes. Left: large wall, right: small wall. Left image shows side and top camera set up for capturing video data. Leashed dogs were allowed to interact with the wall freely. Photos by Monica Moljo.}\label{fig:trial-box}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{figures/top-side-view} \caption{Side (left) and top (right) views of the cameras during a search.}\label{fig:top-side-view}
+\end{figure}
+
+Two video cameras (GoPro Hero 8 Black, GoPro, San Mateo, CA) were placed in view of the front of the wall where dogs interacted with odors, one above the holes and one to the right side of the trial wall, resulting in a top view and side view, respectively (Figure \ref{fig:top-side-view}). Cameras were placed in linear mode using 30 frames per second to record at 4K resolution. Cameras ran continuously for the time that the dogs interacted with the wall area. Videos were calibrated with a three-dimensional calibration object on sight immediately before running dogs in the trial and for each wall (large and small). Cameras were synced using a verbal cue and aligned using iMovie during analysis. Calibration footage was taken each time the cameras were initially set up or moved.
+
+\hypertarget{behavioral-analysis}{%
+\subsubsection{Behavioral Analysis}\label{behavioral-analysis}}
+
+To analyze the behaviors occurring along the search path, two ethograms were created to code behavioral stages related to searching and other, relevant individual behaviors that occurred during the search. Each ethogram was created using the Behavioral Observation Research Interactive Software (BORIS) and coded using the same software\textsuperscript{2}. Behavior states and individual behaviors were scored by two trained observers (one for behavior states, one for individual behaviors).
+
+Using a combination of classical and operant conditioning, dogs are trained to behave a certain way once they have detected a target odor and are as close to the source of that odor as they can possibly get. The use of a detection dog and location of one or more of the target odors will typically go as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The dog is deployed with a search command.\\
+\item
+  \textbf{Casting stage}: the dog will start sampling the air currents trying to locate an odor plume (i.e., ``scent cone''). As air current carries the target odor, dogs locate the edges of the odor plume and try to find the source. The dog will move its head from side to side trying to locate the edges of the odor plume and the odor source.
+\item
+  \textbf{Localizing stage}: once the dog has detected the odor plume, it engages in noticeable changes of behavior. The dog often becomes visibly excited with its bodies becoming more rigid, changes in rates of breathing, and appear more focused. The dog will close its mouth, very focused sniffing occurs, and sniffing frequency increases. Sometimes the dog will appear to become frantic or engage in a sudden turn of the head.
+\item
+  \textbf{Alert phase}: after the dog has successfully located the source of the odor, the dog has been conditioned to perform a specific behavior, often called a Trained Final Response (TFR). The most common TFR's in professional detection work is a sit or freeze and in civilian sport detection is a head turn and look at the handler. The dog is then rewarded with a reinforcer.
+\end{enumerate}
+
+Behavioral stages were defined stages that correspond to the search stages explained above: casting, localizing, and alerting. An off-task stage was also added for times where the dog was not engaged in the search task. The current literature has agreed upon the three defined search phases in dogs defined in Thesen et al.\textsuperscript{3} (initial, deciding, and tracking phases), where each phase differs from the other based on speed, sniff frequency, and time spent sniffing. The addition and use of distinct casting and localizing stages in the current study bridges the gap in terminology from tracking and trailing to the wider olfactory literature, as well as remaining consistent with the stages outlined in Thesen et al.\textsuperscript{3--12}. Therefore, the terms used in the current study better classify and describe the search stages dogs iterate through as they navigate the odor plumes they search.
+
+Individual behaviors were defined as distinct behaviors displayed independently of search stage and collected as both the number of incidents and amount of time the behaviors were displayed. The behaviors were selected after observations made during the trials and because they have been linked with psychological and physiological states of being, such as confusion, avoidance, anxiousness, focus, and alertness\textsuperscript{3,13--17}. Twelve individual behaviors were chosen and coded (see Table \ref{tab:indiv-behav-table} for definitions). All behaviors fell into two major categories of physiological stress: focused/attentive behavior, which can also be classified into the greater category of eustress, or distress.
+
+In BORIS, search stages were scored as start/stop during the timeline of the search. The individual behaviors were collected as both count data and amount of time the behaviors were displayed. Across the two trial dates, fifty-five videos were coded twice, once with each ethogram. The video was coded for the entire time the dog was fully visible within the video. There was one trained coder for each ethogram. Once the videos were coded, the two behavior types were paired statistically so that the appropriate individual behaviors fell within the relevant behavioral state according to video timing.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{\label{tab:indiv-behav-table}Table of individual behaviors}\tabularnewline
+\toprule\noalign{}
+Individual Behaviors & Definitions & States aligned with Behaviors \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Individual Behaviors & Definitions & States aligned with Behaviors \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Jumping & \makecell[l]{The dogs jumps, suspending front paws in air\\or leaning on experimental wall} & Distress \\
+Look at Handler & Dogs looks at handler & Distress \\
+Pawing & Paws any part of the wall or floor & Distress \\
+Sniffing & \makecell[l]{Nose near the wall and clear movement of nose\\to indicate sniffing} & Focused/Attentive \\
+Shoulder shrug & \makecell[l]{Tightening of chest and shoulders so that it\\appears as if the dog is shrugging} & Focused/Attentive \\
+Eye Convergence & \makecell[l]{Both eyes converged on a point on the wall or\\at the handler, indicating focused and intense\\staring} & Focused/Attentive \\
+Facial Tensing & Tensing of the facial muscles & Focused/Attentive \\
+Head Turn & \makecell[l]{Turning the head away from the wall and towards\\the handler} & Distress \\
+Lip Lick & Clear tongue protrusion and lip licking & Distress \\
+Ear Prick & \makecell[l]{Muscular modulation of ear to either perked up\\position or pointed back} & Focused/Attentive \\
+Head Snap & \makecell[l]{Clear and quick snap of head back to original\\head position} & Focused/Attentive \\
+Tail Wag & Back and forth movement of tail & Focused/Attentive \\
+\end{longtable}
+
+\hypertarget{kinematic-analysis}{%
+\subsubsection{Kinematic Analysis}\label{kinematic-analysis}}
+
+Movements of dogs during the search were quantified using the tracking software DLTdv8\textsuperscript{18}. Two points on the dogs' heads (the middle of the tip of the nose, in between the dogs' eyes) were digitized by hand in each frame of the two synced video views in DLTdv8. The two dimensional points from each video view were then used with easyWand calibration to calculate the three-dimensional position of each digitized point\textsuperscript{19}. Three-dimensional points were then exported for further analysis using custom software in R version 4.3.1\textsuperscript{20} (See data availability for location of code used for analyses). The same two coders for the behavioral analysis completed the kinematic analysis, with one coder acting as a confirmatory judge of the first coder's analysis.
+
+\hypertarget{statistical-analysis}{%
+\subsubsection{Statistical analysis}\label{statistical-analysis}}
+
+Statistical analyses of search stage and behavior data was performed in R version 4.3.1\textsuperscript{20}. Data for comparison were tested for normality with a Shapiro-Wilk test and for significance using Welch's t-test, Wilcoxon rank-sum test, or signed rank test, noted along with statistical values reported below. P-values were adjusted for multiple comparisons using a Bonferroni correction.
+
+To compare where the dogs concentrated their efforts during different types of behavior, a cluster comparison for two behavior types (casting and localizing) was performed. Clusters were identified with a k-means analysis using the k-means function in base R. K-means clustering is a method that reduces the within cluster variance relative to the clusters' mean for a specified number of groups\textsuperscript{21}. K-means quantification requires the user to specify the number of clusters to be found. In this analysis a cluster would equate to a high density zone of a given behavior. For our experimental configuration this was set to five, one per odor hole and one additional for background/off-wall behavior.
+
+To evaluate the accuracy of this clustering scheme for each chemical relative to our expectation we then calculated the gap statistic of each cluster using the function \texttt{clusGap} from cluster package was then calculated\textsuperscript{22}. The gap statistic summarized the distance of the pooled sum of the squares for a cluster relative to that data under a null distribution\textsuperscript{23}. The higher the gap statistic, the more defined a cluster is. Gap statistics are often used to search for the optimal number of clusters in the system but here were used to compare the performance of a single clustering configuration for each target chemical to assess how centralized the behaviors of the dogs are in their search.
+
+\hypertarget{references}{%
+\subsection*{References}\label{references}}
+\addcontentsline{toc}{subsection}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-simon2019}{}}%
+\CSLLeftMargin{1. }%
+\CSLRightInline{Simon, A. G. \emph{et al.} A method for controlled odor delivery in olfactory field-testing. \emph{Chemical Senses} \textbf{44}, 399--408 (2019).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-friard2016boris}{}}%
+\CSLLeftMargin{2. }%
+\CSLRightInline{Friard, O. \& Gamba, M. {BORIS}: A free, versatile open-source event-logging software for video/audio coding and live observations. \emph{Methods in Ecology and Evolution} \textbf{7}, 1325--1330 (2016).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-thesen1993behaviour}{}}%
+\CSLLeftMargin{3. }%
+\CSLRightInline{Thesen, A., Steen, J. B. \& Dóving, K. B. Behaviour of dogs during olfactory tracking. \emph{Journal of Experimental Biology} \textbf{180}, 247--251 (1993).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-weissburg1994odor}{}}%
+\CSLLeftMargin{4. }%
+\CSLRightInline{Weissburg, M. J. \& Zimmer-Faust, R. K. Odor plumes and how blue crabs use them in finding prey. \emph{Journal of Experimental Biology} \textbf{197}, 349--375 (1994).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-settles2005sniffers}{}}%
+\CSLLeftMargin{5. }%
+\CSLRightInline{Settles, G. S. Sniffers: Fluid-dynamic sampling for olfactory trace detection in nature and homeland security -- the 2004 freeman scholar lecture. \emph{Journal of Fluids Engineering} \textbf{127}, 189--218 (2005).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-belanger1996adaptive}{}}%
+\CSLLeftMargin{6. }%
+\CSLRightInline{Belanger, J. H. \& Willis, M. A. Adaptive control of odor-guided locomotion: Behavioral flexibility as an antidote to environmental Unpredictability1. \emph{Adaptive Behavior} \textbf{4}, 217--253 (1996).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hepper2005many}{}}%
+\CSLLeftMargin{7. }%
+\CSLRightInline{Hepper, P. G. \& Wells, D. L. How many footsteps do dogs need to determine the direction of an odour trail? \emph{Chemical Senses} \textbf{30}, 291--298 (2005).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-farkas1972chemical}{}}%
+\CSLLeftMargin{8. }%
+\CSLRightInline{Farkas, S. \& Shorey, H. Chemical trail-following by flying insects: A mechanism for orientation to a distant odor source. \emph{Science} \textbf{178}, 67--68 (1972).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-prada2018birds}{}}%
+\CSLLeftMargin{9. }%
+\CSLRightInline{Prada, P. A. \& Furton, K. G. Birds and dogs: Toward a comparative perspective on odor use and detection. \emph{Frontiers in Veterinary Science} \textbf{5}, 188 (2018).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-murlis1992odor}{}}%
+\CSLLeftMargin{10. }%
+\CSLRightInline{Murlis, J., Elkinton, J. S. \& Carde, R. T. Odor plumes and how insects use them. \emph{Annual review of entomology} \textbf{37}, 505--532 (1992).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-gire2016mice}{}}%
+\CSLLeftMargin{11. }%
+\CSLRightInline{Gire, D. H., Kapoor, V., Arrighi-Allisan, A., Seminara, A. \& Murthy, V. N. Mice develop efficient strategies for foraging and navigation using complex natural stimuli. \emph{Current Biology} \textbf{26}, 1261--1273 (2016).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-reddy2022olfactory}{}}%
+\CSLLeftMargin{12. }%
+\CSLRightInline{Reddy, G., Murthy, V. N. \& Vergassola, M. Olfactory sensing and navigation in turbulent environments. \emph{Annual Review of Condensed Matter Physics} \textbf{13}, 191--213 (2022).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-bodnariu2008indicators}{}}%
+\CSLLeftMargin{13. }%
+\CSLRightInline{Bodnariu, A. \emph{et al.} Indicators of stress and stress assessment in dogs. \emph{Lucr Stiint Med Vet} \textbf{41}, 20--26 (2008).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-melco2020investigation}{}}%
+\CSLLeftMargin{14. }%
+\CSLRightInline{Melco, A. L., Goldman, L., Fine, A. H. \& Peralta, J. M. Investigation of physiological and behavioral responses in dogs participating in animal-assisted therapy with children diagnosed with attention-deficit hyperactivity disorder. \emph{Journal of Applied Animal Welfare Science} \textbf{23}, 10--28 (2020).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-beerda2000behavioural}{}}%
+\CSLLeftMargin{15. }%
+\CSLRightInline{Beerda, B., Schilder, M. B., Van Hooff, J., Vries, H. W. de \& Mol, J. Behavioural and hormonal indicators of enduring environmental stress in dogs. \emph{Animal welfare} \textbf{9}, 49--62 (2000).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-sinn2010personality}{}}%
+\CSLLeftMargin{16. }%
+\CSLRightInline{Sinn, D. L., Gosling, S. D. \& Hilliard, S. Personality and performance in military working dogs: Reliability and predictive validity of behavioral tests. \emph{Applied Animal Behaviour Science} \textbf{127}, 51--65 (2010).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hasegawa2014dogs}{}}%
+\CSLLeftMargin{17. }%
+\CSLRightInline{Hasegawa, M., Ohtani, N. \& Ohta, M. Dogs' body language relevant to learning achievement. \emph{Animals} \textbf{4}, 45--58 (2014).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-hedrick2008software}{}}%
+\CSLLeftMargin{18. }%
+\CSLRightInline{Hedrick, T. L. Software techniques for two-and three-dimensional kinematic measurements of biological and biomimetic systems. \emph{Bioinspiration \& biomimetics} \textbf{3}, 034001 (2008).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-theriault2014protocol}{}}%
+\CSLLeftMargin{19. }%
+\CSLRightInline{Theriault, D. H. \emph{et al.} A protocol and calibration method for accurate multi-camera field videography. \emph{Journal of Experimental Biology} \textbf{217}, 1843--1848 (2014).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Rcoreteam}{}}%
+\CSLLeftMargin{20. }%
+\CSLRightInline{R Core Team. \emph{\href{https://www.R-project.org}{R: A language and environment for statistical computing}}. (R Foundation for Statistical Computing, 2022).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Hartigan_Wong_1979}{}}%
+\CSLLeftMargin{21. }%
+\CSLRightInline{Hartigan, J. A. \& Wong, M. A. \href{http://www.jstor.org/stable/2346830}{Algorithm AS 136: A k-means clustering algorithm}. \emph{Journal of the Royal Statistical Society. Series C (Applied Statistics)} \textbf{28}, 100--108 (1979).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-clusterpkg}{}}%
+\CSLLeftMargin{22. }%
+\CSLRightInline{Maechler, M., Rousseeuw, P., Struyf, A., Hubert, M. \& Hornik, K. \emph{\href{https://CRAN.R-project.org/package=cluster}{Cluster: Cluster analysis basics and extensions}}. vols Version 2.1.4 (2022).}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tibshirani_estimating_2001}{}}%
+\CSLLeftMargin{23. }%
+\CSLRightInline{Tibshirani, R., Walther, G. \& Hastie, T. \href{https://doi.org/10.1111/1467-9868.00293}{Estimating the {Number} of {Clusters} in a {Data} {Set} {Via} the {Gap} {Statistic}}. \emph{Journal of the Royal Statistical Society Series B: Statistical Methodology} \textbf{63}, 411--423 (2001).}
+
+\end{CSLReferences}
+
+\end{document}

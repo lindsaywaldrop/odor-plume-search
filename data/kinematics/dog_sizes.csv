@@ -1,0 +1,28 @@
+dog,breed,size,weight
+1,"Laborador retriever",large,60
+10,"English spaniel",large,37
+11,"Belgian malinois mix",large,75
+12,"English shepherd",large,65
+13,"Chihuahua mix",small,10
+14,"Poodle",large,38
+15,"Pit bull terrier",large,51
+16,"Chihuahua mix",small,19
+17,"Labrador retriever mix",large,70
+19,"Golden retriever",large,60
+2,"Shetland Sheepdog",large,30
+20,"Boxer",large,56
+21,"Bull terrier",large,57
+22,"Chihuahua mix",small,8.5
+23,"Dachshund",small,8
+24,"Dachshund",small,11
+25,"Chihuahua",small,10
+6,"Unknown",large,45
+9,"Belgian tervuren",large,51
+100,"Belgian malinois",operational,65
+101,"German shepherd",operational,65
+102,"German shepherd",operational,78
+103,"Dutch shepherd",operational,55
+104,"Belgian malinois/German shepherd",operational,60
+105,"Dutch Shepherd",operational,69
+106,"Belgian malinois",operational,70
+107,"Belgian malinois",operational,65
