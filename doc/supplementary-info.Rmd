@@ -1,5 +1,5 @@
 ---
-title: "Supplemental Information to `Physical properties of odors affect behavior of trained detection dogs during close-quarters searches'"
+title: "Supplemental Information to `Physical properties of odorants affect behavior of trained detection dogs during close-quarters searches'"
 author: 
  - Daniel Mejia^1^, Lydia Burnett^2^, Nicholas Hebdon^1^, Peter Stevens^3^, Alexis Shiber^1^, Clay Cranston^1^, Lauryn DeGreeff^2^, and Lindsay D. Waldrop^1^ 
 date: "`r Sys.Date()`"
