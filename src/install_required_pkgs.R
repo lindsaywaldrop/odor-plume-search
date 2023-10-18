@@ -1,7 +1,8 @@
 # Package installation script
 
-packages <- c("markdown", "rmarkdown", "pracma", "tidyr", "forcats", "dplyr", "ggplot2", "patchwork",
-               "viridis", "signal", "stringr", "here")
+packages <- c("markdown", "rmarkdown", "bookdown", "knitr", "pracma", "tidyr", 
+              "forcats", "dplyr", "ggplot2", "patchwork", "kableExtra", "cluster",
+               "viridis", "signal", "stringr", "here", "scatterplot3d")
 
 package.check <- lapply(
   packages,
