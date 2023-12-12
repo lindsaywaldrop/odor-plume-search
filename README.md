@@ -25,6 +25,7 @@ This repository is design to work with RStudio (version 2023.06.0+421) as an RSt
  - stringr (v 1.5.0)
  - dplyr (v 1.1.3)
  - pracma (v 2.4.2)
+ - scatterplot3d (v 0.3.44)
  
 Instructions:
 
