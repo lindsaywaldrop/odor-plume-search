@@ -1,0 +1,23 @@
+Observation id,T3D9R1,,,,,,,
+,,,,,,,,
+Media file(s),,,,,,,,
+,,,,,,,,
+Player #1,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 1/T3D9R1_SideView_720l.mp4,,,,,,,
+,,,,,,,,
+Observation date,2023-04-10 14:30:35,,,,,,,
+,,,,,,,,
+Description,,,,,,,,
+,,,,,,,,
+Time offset (s),0.0,,,,,,,
+,,,,,,,,
+independent variables,,,,,,,,
+variable,value,,,,,,,
+,,,,,,,,
+Time,Media file path,Total length,FPS,Subject,Behavior,Behavioral category,Comment,Status
+49.042,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 1/T3D9R1_SideView_720l.mp4,71.360,29.97,,s,,,START
+53.292,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 1/T3D9R1_SideView_720l.mp4,71.360,29.97,,s,,,STOP
+53.793,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 1/T3D9R1_SideView_720l.mp4,71.360,29.97,,t,,,POINT
+60.793,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 1/T3D9R1_SideView_720l.mp4,71.360,29.97,,t,,,POINT
+62.292,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 1/T3D9R1_SideView_720l.mp4,71.360,29.97,,s,,,START
+65.042,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 1/T3D9R1_SideView_720l.mp4,71.360,29.97,,s,,,STOP
+67.793,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 1/T3D9R1_SideView_720l.mp4,71.360,29.97,,t,,,POINT

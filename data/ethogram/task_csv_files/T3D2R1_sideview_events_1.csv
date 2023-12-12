@@ -1,0 +1,76 @@
+Observation id,T3D2R1_sideview_1,,,,,,,
+,,,,,,,,
+Media file(s),,,,,,,,
+,,,,,,,,
+Player #1,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,,,,,,,
+,,,,,,,,
+Observation date,2023-04-04 13:12:16,,,,,,,
+,,,,,,,,
+Description,Trial 3 Dog 2 Run1 side view (Waldrop),,,,,,,
+,,,,,,,,
+Time offset (s),0.000,,,,,,,
+,,,,,,,,
+independent variables,,,,,,,,
+variable,value,,,,,,,
+,,,,,,,,
+Time,Media file path,Total length,FPS,Subject,Behavior,Behavioral category,Comment,Status
+58.726,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+59.227,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+59.634,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+61.386,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+61.726,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+62.134,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+62.635,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+64.386,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+64.728,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+65.134,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+65.476,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+66.884,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+67.227,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+67.477,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+67.885,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+70.635,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+70.975,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,o,,,START
+70.975,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+71.385,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+71.886,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+71.976,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,o,,,STOP
+72.226,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+72.386,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+73.227,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+73.384,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+74.135,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+74.226,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+75.886,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+75.976,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+76.134,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+76.886,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+77.635,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+78.883,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+78.977,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+79.134,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+82.134,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+82.384,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+90.636,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+90.726,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+91.134,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+91.234,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+91.725,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+91.886,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+92.385,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+92.409,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+94.909,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+95.135,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+95.409,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+95.634,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+102.636,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+103.135,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+121.384,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+121.410,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+121.635,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+121.910,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+123.634,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,START
+123.909,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP
+124.384,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,c,,,STOP
+124.408,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,START
+127.410,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R1_SideView_720l.mp4,131.370,29.97,,t,,,STOP

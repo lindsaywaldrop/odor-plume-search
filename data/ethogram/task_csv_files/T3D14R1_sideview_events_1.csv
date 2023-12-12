@@ -1,0 +1,46 @@
+Observation id,T3D14R1_sideview_1,,,,,,,
+,,,,,,,,
+Media file(s),,,,,,,,
+,,,,,,,,
+Player #1,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,,,,,,,
+,,,,,,,,
+Observation date,2023-04-04 14:03:14,,,,,,,
+,,,,,,,,
+Description,Trial 3 Dog 14 Run 1 side view (Waldrop),,,,,,,
+,,,,,,,,
+Time offset (s),0.000,,,,,,,
+,,,,,,,,
+independent variables,,,,,,,,
+variable,value,,,,,,,
+,,,,,,,,
+Time,Media file path,Total length,FPS,Subject,Behavior,Behavioral category,Comment,Status
+98.597,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,START
+101.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,START
+101.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,STOP
+103.597,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,STOP
+103.597,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,START
+106.344,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,START
+106.847,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,STOP
+108.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,STOP
+108.597,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,START
+111.350,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,START
+111.350,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,STOP
+113.593,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,STOP
+113.847,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,START
+115.350,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,STOP
+115.846,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,START
+116.847,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,STOP
+118.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,START
+119.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,START
+119.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,STOP
+119.692,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,o,,,START
+120.693,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,o,,,STOP
+124.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,STOP
+124.597,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,START
+126.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,START
+126.097,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,t,,,STOP
+130.189,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,o,,,START
+130.847,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,c,,,STOP
+131.685,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,o,,,STOP
+131.713,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,a,,,START
+133.963,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D14R1_SideView_720l.mp4,153.640,29.97,,a,,,STOP

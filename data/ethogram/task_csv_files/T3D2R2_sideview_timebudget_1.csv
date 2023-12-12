@@ -1,0 +1,15 @@
+Observations:,,,,,,,,,
+,,,,,,,,,
+Observation id,T3D2R2_sideview_1,,,,,,,,
+Observation date,2023-04-04T14:54:11,,,,,,,,
+Description,Trial 3 Dog 2 Run 2 side view (Waldrop),,,,,,,,
+Independent variables:,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+Time budget:,,,,,,,,,
+Subject,Behavior,Modifiers,Total number of occurences,Total duration (s),Duration mean (s),Duration std dev,inter-event intervals mean (s),inter-event intervals std dev,% of total length
+,,,,,,,,,
+No focal subject,t,,8,18.817,2.352,1.519,1.637,0.571,56.400
+No focal subject,c,,8,14.751,1.844,0.981,1.928,2.019,44.200
+No focal subject,o,,4,3.501,0.875,0.433,8.842,1.757,10.500
+No focal subject,a,,2,2.249,1.125,0.885,1.252,NA,6.700

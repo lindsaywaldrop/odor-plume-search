@@ -1,0 +1,38 @@
+Observation id,T3D20R1_sideview_1,,,,,,,
+,,,,,,,,
+Media file(s),,,,,,,,
+,,,,,,,,
+Player #1,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,,,,,,,
+,,,,,,,,
+Observation date,2023-04-04 12:54:24,,,,,,,
+,,,,,,,,
+Description,Trial 3 Dog 20 Run 1 side view (Waldrop),,,,,,,
+,,,,,,,,
+Time offset (s),0.000,,,,,,,
+,,,,,,,,
+independent variables,,,,,,,,
+variable,value,,,,,,,
+,,,,,,,,
+Time,Media file path,Total length,FPS,Subject,Behavior,Behavioral category,Comment,Status
+26.860,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,t,,,START
+27.110,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,t,,,STOP
+27.269,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,o,,,START
+30.767,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,o,,,STOP
+30.861,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,c,,,START
+30.873,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,t,,,START
+31.359,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,c,,,STOP
+33.361,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,t,,,STOP
+33.518,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,o,,,START
+34.610,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,c,,,START
+34.767,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,o,,,STOP
+35.110,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,t,,,START
+35.861,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,c,,,STOP
+36.861,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,c,,,START
+37.110,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,c,,,STOP
+38.859,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,c,,,START
+38.859,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,t,,,STOP
+39.019,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,o,,,START
+39.110,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,c,,,STOP
+41.519,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,o,,,STOP
+41.610,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,t,,,START
+44.610,/Users/waldrop/Desktop/dog_ethogram/T3D20R1_SideView_720l.mp4,48.130,29.97,,t,,,STOP

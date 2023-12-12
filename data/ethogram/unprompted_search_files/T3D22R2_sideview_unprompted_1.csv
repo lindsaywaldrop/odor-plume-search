@@ -1,0 +1,18 @@
+Observation id,T3D22R2_sideview_1,,,,,,,
+,,,,,,,,
+Media file(s),,,,,,,,
+,,,,,,,,
+Player #1,/Users/regolith/Documents/DogVideos25Feb2023/SmallSideCamera/T3D22R2_SideView_720l.mp4,,,,,,,
+,,,,,,,,
+Observation date,2023-05-17 14:10:59,,,,,,,
+,,,,,,,,
+Description,,,,,,,,
+,,,,,,,,
+Time offset (s),0.000,,,,,,,
+,,,,,,,,
+independent variables,,,,,,,,
+variable,value,,,,,,,
+,,,,,,,,
+Time,Media file path,Total length,FPS,Subject,Behavior,Behavioral category,Comment,Status
+84.508,/Users/regolith/Documents/DogVideos25Feb2023/SmallSideCamera/T3D22R2_SideView_720l.mp4,184.430,29.97,,r,,,START
+128.257,/Users/regolith/Documents/DogVideos25Feb2023/SmallSideCamera/T3D22R2_SideView_720l.mp4,184.430,29.97,,r,,,STOP

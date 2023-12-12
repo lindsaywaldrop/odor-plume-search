@@ -1,0 +1,54 @@
+Observation id,T3D15R2,,,,,,,
+,,,,,,,,
+Media file(s),,,,,,,,
+,,,,,,,,
+Player #1,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,,,,,,,
+,,,,,,,,
+Observation date,2023-04-11 10:42:25,,,,,,,
+,,,,,,,,
+Description,,,,,,,,
+,,,,,,,,
+Time offset (s),0.0,,,,,,,
+,,,,,,,,
+independent variables,,,,,,,,
+variable,value,,,,,,,
+,,,,,,,,
+Time,Media file path,Total length,FPS,Subject,Behavior,Behavioral category,Comment,Status
+54.885,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,START
+57.133,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,t,,,POINT
+58.385,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,STOP
+61.386,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,t,,,POINT
+64.386,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,START
+66.476,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,h,,,POINT
+66.634,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,STOP
+66.728,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,START
+67.407,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,STOP
+69.726,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,START
+70.476,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,STOP
+70.568,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,h,,,POINT
+70.819,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,START
+71.318,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,STOP
+74.818,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,t,,,POINT
+76.317,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,START
+77.818,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,STOP
+77.818,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,START
+80.569,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,STOP
+80.910,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,h,,,POINT
+81.159,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,START
+81.658,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,STOP
+83.411,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,t,,,POINT
+84.159,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,START
+84.660,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,STOP
+85.411,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,START
+85.909,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,h,,,POINT
+85.909,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,START
+85.909,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,STOP
+86.909,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,STOP
+87.411,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,START
+88.910,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,h,,,POINT
+88.910,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,START
+88.910,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,STOP
+90.409,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,l,,,STOP
+91.909,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,START
+92.659,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,s,,,STOP
+92.842,/Volumes/Mr Drive/Waldrop Lab Ethogram/Videos/Trial 3/Run 2/T3D15R2_SideView_720l.mp4,96.300,29.97,,c,,,POINT

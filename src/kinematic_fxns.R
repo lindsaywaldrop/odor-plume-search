@@ -3,7 +3,7 @@
 
 #### Functions ####
 
-load_dataset <- function(trial, dog, run, frame_rate, holes_condition=T){
+load_dataset <- function(trial, dog, run, frame_rate, holes_condition = T){
   dat <- read.csv(paste0("./data/kinematics/Trial", trial, "Run", run,
                          "/T",trial,"D",dog,"R",run,"_DLTdv8_data_xyzpts.csv"))
   nose_dat <- data.frame("frame" = seq(1,nrow(dat)), 
@@ -46,15 +46,29 @@ load_dataset <- function(trial, dog, run, frame_rate, holes_condition=T){
   
 }
 
-load_event_list <- function(){
-  dat <- read.csv("./data/kinematics/kinematic_events.csv", skip = 0, header = T, 
-                  colClasses = c("factor", "factor", "factor"))
+load_event_list <- function(opt = "default"){
+  if(opt == "default"){
+    dat <- read.csv("./data/kinematics/kinematic_events.csv", skip = 0, header = T, 
+                    colClasses = c("factor", "factor", "factor"))
+  }else if(opt == "kinematics-paper"){
+    dat <- read.csv("./data/kinematics/kinematic_events_kinematics-paper.csv", 
+                    skip = 0, header = T, 
+                    colClasses = c("factor", "factor", "factor"))
+  }else {
+    stop("Unknown opt, please choose valid opt for event list.")
+  }
   return(dat)
 }
 
-assemble_kin_data <- function(frame_rate){
+assemble_kin_data <- function(frame_rate, opt = "default"){
   # Load event list to process
-  event_list <- load_event_list()
+  if(opt == "default"){
+    event_list <- load_event_list()
+  }else if(opt != "default"){
+    event_list <- load_event_list(opt = opt)
+  } else{
+    stop("Opt is unknown, please choose valid opt.")
+  }
   all_dat <- list()
   # load tracks data and correct it in 3D and align with fixed points
   for(i in 1:nrow(event_list)){

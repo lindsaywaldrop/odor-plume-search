@@ -1,11 +1,20 @@
 # Ethogram functions
 
 # Load the ethogram task list
-load_task_list <- function(){
-  task_list <- read.csv("./data/ethogram/task-list.csv")
-  task_list <- na.omit(task_list) # Removing rows with NA (not completed)
-  task_list <- task_list[task_list$Dog != 10,,] # Removing Dog 10
-  #task_list <- task_list[task_list$Dog != 21,] # Removing dog 21
+load_task_list <- function(opt = "default"){
+  if(opt == "default"){
+    task_list <- read.csv("./data/ethogram/task-list.csv")
+    task_list <- task_list[task_list$Dog != 21,] # Removing dog 21
+    task_list$Dog <- factor(task_list$Dog)
+  }else if(opt == "kinematics-paper"){
+    task_list <- read.csv("./data/ethogram/task-list-kinematics-paper.csv")
+    task_list <- task_list[,-grep("Notes", colnames(task_list))]
+    task_list <- na.omit(task_list) # Removing rows with NA (not completed)
+    task_list <- task_list[task_list$Dog != 10,] # Removing Dog 10
+    #task_list <- task_list[task_list$Dog != 21,] # Removing dog 21
+  }else{
+    stop("Please choose a valid option.")
+  }
   task_list$Dog <- factor(task_list$Dog)
   return(task_list)
 }
@@ -23,6 +32,7 @@ load_ethograms <- function(task_list, opt){
     for(k in levels(task_list$Dog)){
       dog_tasks <- task_list[task_list$Dog == k, ]
       #trial, dog, run, trained
+      print(paste("Dog:",k,", Trained:", dog_tasks$Trained))
       dog_before_2E1H <- load_ethogram_tasks(dog_tasks$Trial[1], k, 1, 
                                              dog_tasks$Trained[1])
       dog_before_Amm <- load_ethogram_tasks(dog_tasks$Trial[2], k, 2, 
@@ -96,19 +106,24 @@ load_ethograms <- function(task_list, opt){
     }
     return(event_data)
     
-  }else if(opt == "individual"){
+  } else if(opt == "individual"){
     individual_data <- list()
     
     for(k in levels(task_list$Dog)){
       dog_tasks <- task_list[task_list$Dog == k, ]
-      dog_before_2E1H <- load_ethogram_individuals(dog_tasks$Trial[1], k, 1, 
-                                                   dog_tasks$Trained[1])
-      dog_before_Amm <- load_ethogram_individuals(dog_tasks$Trial[2], k, 2, 
-                                                  dog_tasks$Trained[2])
-      dog_after_2E1H <- load_ethogram_individuals(dog_tasks$Trial[3], k, 1, 
-                                                  dog_tasks$Trained[3])
-      dog_after_Amm <- load_ethogram_individuals(dog_tasks$Trial[4], k, 2, 
-                                                 dog_tasks$Trained[4])
+      print(paste("Dog:",k,", Trained:", dog_tasks$Trained))
+      if(dog_tasks$Trial[1] > 3){
+        dog_before_2E1H <- NULL
+        dog_before_Amm <- NULL
+        dog_after_2E1H <- load_ethogram_individuals(dog_tasks$Trial[1], k, 1, T)
+        dog_after_Amm <- load_ethogram_individuals(dog_tasks$Trial[1], k, 2, T)
+        warning("Trial 4 and 5 runs don't correspond to the same chemicals!")
+      }else{
+        dog_before_2E1H <- load_ethogram_individuals(1, k, 1, F)
+        dog_before_Amm <- load_ethogram_individuals(1, k, 2, F)
+        dog_after_2E1H <- load_ethogram_individuals(3, k, 1, T)
+        dog_after_Amm <- load_ethogram_individuals(3, k, 2, T)
+      }
       if(is.null(dog_before_2E1H) | is.null(dog_after_2E1H) | is.null(dog_before_Amm) | 
          is.null(dog_before_Amm)){
         time_changes_2E1H <- NULL

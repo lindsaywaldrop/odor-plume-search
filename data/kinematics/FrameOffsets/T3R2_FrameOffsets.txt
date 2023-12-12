@@ -1,0 +1,20 @@
+Frame Offsets Trial 3 Run 2
+wall_size,trial_code,movie1_side_offset,movie2_top_offset
+large,T3CALR2,0,119
+large,T3D1R2NO,156,966
+large,T3D2R2NO,0,150
+large,T3D9R2NO,0,15
+large,T3D1R2,144,186
+large,T3D2R2,0,146
+large,T3D9R2,173,158
+large,T3D11R2,0,65
+large,T3D12R2,0,59
+large,T3D14R2,0,21
+large,T3D15R2,0,156
+large,T3D17R2,0,191
+large,T3D19R2,119,72
+large,T3D20R2,0,183
+large,T3D21R2,0,754
+small,T3D22R2,166,100
+small,T3D23R2,0,115
+small,T3D24R2,0,52

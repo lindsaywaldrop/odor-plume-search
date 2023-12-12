@@ -16,14 +16,14 @@ source("./src/ethogram_fxns.R")
 # Load kinematic data:
 frame_rate <- 29.97
 
-track_list <- load_event_list()
-all_dat <- assemble_kin_data(frame_rate)
+track_list <- load_event_list("kinematics-paper")
+all_dat <- assemble_kin_data(frame_rate, opt = "kinematics-paper")
 all_dat <- remove_prompted(all_dat)
 
 tracks <- pivot_kinematic_data(all_dat)
 
 # Importing list of runs to analyze
-task_list <- load_task_list()
+task_list <- load_task_list("kinematics-paper")
 
 # Loads and shapes task event data
 event_data <- load_ethograms(task_list, "individual")
@@ -73,8 +73,6 @@ tracks <- assign_tasks_tracks(tracks, tasks_info)
 
 tracks$task <- factor(tracks$task, levels=c("t", "c", "o", "a"))
 
-# Restricting data set to only Trial 3 (trained)
-tracks <- tracks[tracks$trained == T,]
 
 
 # Saving final kinematics track data to results folder

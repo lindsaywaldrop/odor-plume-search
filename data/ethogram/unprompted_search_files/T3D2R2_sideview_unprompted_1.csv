@@ -1,0 +1,18 @@
+Observation id,T3D2R2_sideview_1,,,,,,,
+,,,,,,,,
+Media file(s),,,,,,,,
+,,,,,,,,
+Player #1,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R2_SideView_720l.mp4,,,,,,,
+,,,,,,,,
+Observation date,2023-05-17 13:29:24,,,,,,,
+,,,,,,,,
+Description,,,,,,,,
+,,,,,,,,
+Time offset (s),0.000,,,,,,,
+,,,,,,,,
+independent variables,,,,,,,,
+variable,value,,,,,,,
+,,,,,,,,
+Time,Media file path,Total length,FPS,Subject,Behavior,Behavioral category,Comment,Status
+24.520,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R2_SideView_720l.mp4,57.360,29.97,,r,,,START
+46.774,/Users/regolith/Documents/DogVideos25Feb2023/LargeSideCamera/T3D2R2_SideView_720l.mp4,57.360,29.97,,r,,,STOP
