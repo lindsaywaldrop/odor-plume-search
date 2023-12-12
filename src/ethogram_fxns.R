@@ -130,8 +130,8 @@ load_ethograms <- function(task_list, opt){
         time_changes_Amm <- NULL
         state_count_changes_2E1H <- NULL
         state_count_changes_Amm <- NULL
-        points_count_changes_2E1H <- NULL
-        points_count_changes_Amm <- NULL
+        point_count_changes_2E1H <- NULL
+        point_count_changes_Amm <- NULL
       }else{
         time_changes_2E1H <- calc_time_differences(
           dog_before_2E1H$states_time_budget,
