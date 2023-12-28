@@ -4,7 +4,7 @@ This is the repository with code and data to support the manuscript ``Physical p
 
 A compiled copy of the manuscript is located in `doc/` as `main-manuscript.pdf` and the supplementary info is also in the `doc/` folder as `supplementary-info.pdf`. 
 
-Data from the processed kinematic tracks required to reproduce figures in the manuscript is located in `results/csv-files` as `kinematic-final-tracks_2023-08-25.csv`. The results of other analyses are also in this folder. 
+Data from the processed kinematic tracks required to reproduce figures in the manuscript is located in `results/csv-files` as `kinematic-final-tracks_2023-12-21.csv`. The results of other analyses are also in this folder. 
 
 Raw data including the unprocessed kinematic tracks and ethogram files are located in the `data/` folder in `kinematics/` and `ethogram/`, respectively. 
 

@@ -111,18 +111,19 @@ load_ethograms <- function(task_list, opt){
     
     for(k in levels(task_list$Dog)){
       dog_tasks <- task_list[task_list$Dog == k, ]
-      print(paste("Dog:",k,", Trained:", dog_tasks$Trained))
-      if(dog_tasks$Trial[1] > 3){
+      print(paste("Dog:",k,", Trained:", dog_tasks$Trained,"\n"))
+      trials <- unique(dog_tasks$Trial)
+      if(min(trials) >= 3){
         dog_before_2E1H <- NULL
         dog_before_Amm <- NULL
-        dog_after_2E1H <- load_ethogram_individuals(dog_tasks$Trial[1], k, 1, T)
-        dog_after_Amm <- load_ethogram_individuals(dog_tasks$Trial[1], k, 2, T)
+        dog_after_2E1H <- load_ethogram_individuals(trials[1], k, 1, T)
+        dog_after_Amm <- load_ethogram_individuals(trials[1], k, 2, T)
         warning("Trial 4 and 5 runs don't correspond to the same chemicals!")
       }else{
-        dog_before_2E1H <- load_ethogram_individuals(1, k, 1, F)
-        dog_before_Amm <- load_ethogram_individuals(1, k, 2, F)
-        dog_after_2E1H <- load_ethogram_individuals(3, k, 1, T)
-        dog_after_Amm <- load_ethogram_individuals(3, k, 2, T)
+        dog_before_2E1H <- load_ethogram_individuals(trials[1], k, 1, F)
+        dog_before_Amm <- load_ethogram_individuals(trials[1], k, 2, F)
+        dog_after_2E1H <- load_ethogram_individuals(trials[2], k, 1, T)
+        dog_after_Amm <- load_ethogram_individuals(trials[2], k, 2, T)
       }
       if(is.null(dog_before_2E1H) | is.null(dog_after_2E1H) | is.null(dog_before_Amm) | 
          is.null(dog_before_Amm)){
@@ -130,8 +131,8 @@ load_ethograms <- function(task_list, opt){
         time_changes_Amm <- NULL
         state_count_changes_2E1H <- NULL
         state_count_changes_Amm <- NULL
-        point_count_changes_2E1H <- NULL
-        point_count_changes_Amm <- NULL
+        points_count_changes_2E1H <- NULL
+        points_count_changes_Amm <- NULL
       }else{
         time_changes_2E1H <- calc_time_differences(
           dog_before_2E1H$states_time_budget,

@@ -60,7 +60,7 @@ load_event_list <- function(opt = "default"){
   return(dat)
 }
 
-assemble_kin_data <- function(frame_rate, opt = "default"){
+assemble_kin_data <- function(frame_rate, hole_bump_x, hole_bump_z, opt = "default"){
   # Load event list to process
   if(opt == "default"){
     event_list <- load_event_list()
@@ -74,6 +74,10 @@ assemble_kin_data <- function(frame_rate, opt = "default"){
   for(i in 1:nrow(event_list)){
         trial <- event_list$trial[i]
         run <- event_list$run[i]
+        hot_hole <- ifelse(run == 1, 6, 9)
+        blank_hole <- ifelse(run == 1, 7, 8)
+        bromo_hole <- ifelse(run == 1, 9, 6)
+        methben_hole <- ifelse(run == 1, 8, 7)
         dog <- event_list$dog[i]
         trained <- ifelse(trial=="1" | trial=="2", F, T)
         trialcode <- paste0("T",trial,"D",dog,"R",run)
@@ -86,6 +90,18 @@ assemble_kin_data <- function(frame_rate, opt = "default"){
         set_dat$tracks$dog <- rep(dog, nrow(set_dat$tracks))
         set_dat$tracks$run <- rep(run, nrow(set_dat$tracks))
         set_dat$tracks$trained <- rep(trained, nrow(set_dat$tracks))
+        set_dat$tracks$hot_dist <- calc_hot_dist(set_dat$tracks[set_dat$tracks$point == "nose",], 
+                                                 set_dat$holes[hot_hole,], 
+                                                 hole_bump_x, hole_bump_z)
+        set_dat$tracks$blank_dist <- calc_hot_dist(set_dat$tracks[set_dat$tracks$point == "nose",], 
+                                                 set_dat$holes[blank_hole,], 
+                                                 hole_bump_x, hole_bump_z)
+        set_dat$tracks$bromo_dist <- calc_hot_dist(set_dat$tracks[set_dat$tracks$point == "nose",], 
+                                                 set_dat$holes[bromo_hole,], 
+                                                 hole_bump_x, hole_bump_z)
+        set_dat$tracks$methben_dist <- calc_hot_dist(set_dat$tracks[set_dat$tracks$point == "nose",], 
+                                                 set_dat$holes[methben_hole,], 
+                                                 hole_bump_x, hole_bump_z)
         all_dat[[trialcode]] <- set_dat
   }
   return(all_dat)
@@ -130,9 +146,42 @@ pivot_kinematic_data <- function(all_dat){
   n <- length(all_dat)
   tracks <- data.frame()
   for(i in 1:n){
-    tracks <- rbind(tracks, na.omit(all_dat[[i]]$tracks))
+    dat <- na.omit(all_dat[[i]]$tracks)
+    holes_dat <- all_dat[[i]]$holes
+    dat$z <- dat$z - mean(holes_dat$z[6:9])
+    tracks <- rbind(tracks, dat)
   }
   return(tracks)
+}
+
+remove_prompted_behaviors <- function(dat){
+  dat$trial <- ifelse(dat$trained == T, 3, ifelse(as.numeric(dat$dog) >= 22, 2, 1))
+  dat$run <- ifelse(dat$target == "2E1H", 1, 2)
+  n <- nrow(dat)
+  for(i in 1:n){
+    trialcode <- find_trial_code(dat, i)
+    if(file.exists(paste0("./data/ethogram/unprompted_search_files/",
+                          trialcode,"_sideview_unprompted_1.csv"))){
+      timeline <- read.csv(paste0("./data/ethogram/unprompted_search_files/",
+                                  trialcode,"_sideview_unprompted_1.csv"),
+                           skip = 15, header = T)
+      trial <- dat$trial[i]
+      run <- dat$run[i]
+      offsets <- read.table(paste0("./data/kinematics/FrameOffsets/T",
+                                   trial, "R", run, "_FrameOffsets.txt"),
+                            sep = ",", header = T, skip = 1)
+      timeline$Time <- timeline$Time - ((offsets$movie1_side_offset[offsets$trial_code == trialcode]-1)/
+                                          timeline$FPS[1])
+      dat$adj_time[i] <- ifelse(dat$adj_time[i] < timeline$Time[1] | 
+                                  dat$adj_time[i] > timeline$Time[2], 
+                                NA, dat$adj_time[i])
+      
+    }else{
+      warning(paste(trialcode,"does not have unprompted timing file!"))
+    }
+  }
+  dat <- dat[-which(is.na(dat$adj_time)),]
+  return(dat)
 }
 
 remove_prompted <- function(all_dat){
@@ -271,9 +320,9 @@ magnitude_3D <- function(x1, x2, y1, y2, z1, z2) {
   return(sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2))
 }
 
-calc_hot_dist <- function(dat, hole){
-  dat$hot_dist <- magnitude_3D(dat$x, hole$x, dat$y, hole$y, dat$z, hole$z)
-  return(dat)
+calc_hot_dist <- function(dat, hole, hole_bump_x, hole_bump_z){
+  hot_dist <- magnitude_3D(dat$x, hole$x + hole_bump_x, dat$y, hole$y, dat$z, hole$z + hole_bump_z)
+  return(hot_dist)
 }
 
 correct_2D_pts <- function(pts, center_pt, alpha){
@@ -472,9 +521,7 @@ correct_ethogram_times <- function(dat, frame_rate){
   for(j in 1:nrow(dat)){
     dog <- dat$dog[j]
     run <- ifelse(dat$target[j]=="2E1H", 1, 2)
-    trial <- ifelse(as.numeric(as.character(dog)) < 22 & dat$trained[j] == F, 1,
-                    ifelse(as.numeric(as.character(dog)) >= 22 & dat$trained[j] == F, 2,
-                           3))
+    trial <- ifelse(dat$trained[j] == T, 3, ifelse(as.numeric(dat$dog[j]) >= 22, 2, 1))
     offsets <- read.table(paste0("./data/kinematics/FrameOffsets/T",
                                  trial, "R", run, "_FrameOffsets.txt"),
                           sep = ",", header = T, skip = 1)
@@ -714,6 +761,180 @@ plot_angle_tracks <- function(tracks, dog, run, col_name, min_height = NULL){
   return(list("p1" = p1,"peaks_points" = peaks_points, "amps" = all_amps, 
               "signs" = all_signs))
 }
+
+calculate_cluster_means <- function(dat){
+  cluster_means <- data.frame("x" = rep(NA, nlevels(dat$cluster)), 
+                              "y" = rep(NA, nlevels(dat$cluster)), 
+                              "z" = rep(NA, nlevels(dat$cluster)), 
+                              "cluster" = factor(levels(dat$cluster)))
+  for(i in levels(dat$cluster)){
+    cluster_means$x[as.numeric(i)] <- mean(dat$x[dat$cluster == i], na.rm = T)
+    cluster_means$y[as.numeric(i)] <- mean(dat$y[dat$cluster == i], na.rm = T)
+    cluster_means$z[as.numeric(i)] <- mean(dat$z[dat$cluster == i], na.rm = T)
+  }
+  return(cluster_means)
+}
+
+was_run_successful <- function(dog, chemical){
+  alerts <-  read.csv("./data/alert_success.csv")
+  alerts$dog <- factor(alerts$dog)
+  alerts$chemical <-factor(alerts$chemical)
+  return(alerts$success[alerts$dog== dog & alerts$chemical == chemical])
+}
+
+#### Plotting function definitions ####
+
+cluster_plot <- function(dat, trial_holes, var1, var2, chem, title_lab = " "){
+  cluster_means <- calculate_cluster_means(dat)
+  if(chem == "2E1H"){
+    y_lab <- "k-mean clustering\n\nVertical distance"
+    methylbenzoate <- trial_holes[8, ]
+    blank <- trial_holes[7, ]
+    bromooctane <- trial_holes[9, ]
+    hot <-  trial_holes[6, ]
+  } else{
+    y_lab <- "Vertical distance"
+    methylbenzoate <- trial_holes[7, ]
+    blank <- trial_holes[8, ]
+    bromooctane <- trial_holes[6, ]
+    hot <-  trial_holes[9, ]
+  }
+  p_cluster <- ggplot(dat, aes(.data[[var1]], .data[[var2]], color = cluster)) + 
+    geom_point(pch=19, alpha = 0.5, size = 0.5) + 
+    stat_ellipse(aes(fill = cluster), type="t", geom = "polygon", alpha=0.4)+
+    geom_point(data = blank, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                      color = NULL, 
+                                                      shape = NULL), 
+               fill = "gray80", size = 3, pch = 21) + 
+    geom_point(data = methylbenzoate, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                      color = NULL, 
+                                                      shape = NULL), 
+               fill = "darkorange3", size = 3, pch = 21) + 
+    geom_point(data = bromooctane, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                      color = NULL, 
+                                                      shape = NULL), 
+               fill = "darkorange3", size = 3, pch = 21) + 
+    geom_point(data = hot, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                      color = NULL, 
+                                                      shape = NULL), 
+               fill = "red", size = 3, pch = 21) +
+    geom_point(data = cluster_means, aes(x = .data[[var1]], 
+                                         y = .data[[var2]], 
+                                        fill = cluster), 
+               color = "black", pch = 23, size = 3) +
+    scale_color_viridis(discrete = T, option = "E", name = "Cluster\nnumber") + 
+    scale_fill_viridis(discrete = T, option = "E", name = "Cluster\nnumber") +
+    coord_fixed(xlim = c(-1.1, 0.5), ylim = c(-0.4, 0.5)) +
+    #coord_cartesian() +
+    ggtitle(title_lab) +
+    ylab(y_lab) + xlab("Along face of wall")+
+    theme_minimal() + theme(plot.title = element_text(hjust = 0.5))
+  return(p_cluster)
+}
+
+point_density_plot <- function(dat, trial_holes, var1, var2, pt_max = 20, 
+                               chem, title_lab = " "){
+  if(chem == "2E1H"){
+    y_lab <- "Point density\n\nVertical distance"
+    methylbenzoate <- trial_holes[8, ]
+    blank <- trial_holes[7, ]
+    bromooctane <- trial_holes[9, ]
+    hot <-  trial_holes[6, ]
+  } else{
+    y_lab <- "Vertical distance"
+    methylbenzoate <- trial_holes[7, ]
+    blank <- trial_holes[8, ]
+    bromooctane <- trial_holes[6, ]
+    hot <-  trial_holes[9, ]
+  }
+  pt_dens_plot <- ggplot(dat, aes(x = .data[[var1]], .data[[var2]])) + 
+    stat_density2d(geom = "polygon", aes(fill=..level.., alpha = ..level..), 
+                   contour = T, h=c(0.2,0.2), n = 20) +
+    scale_fill_viridis(limits = c(0, pt_max), name = "Point\ndensity", discrete = F) + 
+    scale_alpha_continuous(limits = c(-10, 10), name = "", guide = "none") + 
+    geom_point(data = blank, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                      color = NULL, 
+                                                      shape = NULL), 
+               fill = "gray80", size = 3, pch = 21) + 
+    geom_point(data = methylbenzoate, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                      color = NULL, 
+                                                      shape = NULL), 
+               fill = "darkorange3", size = 3, pch = 21) + 
+    geom_point(data = bromooctane, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                      color = NULL, 
+                                                      shape = NULL), 
+               fill = "darkorange3", size = 3, pch = 21) + 
+    geom_point(data = hot, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                      color = NULL, 
+                                                      shape = NULL), 
+               fill = "red", size = 3, pch = 21) +
+    xlim(-1.1, 0.5) + ylim(-0.4, 0.5) +
+    coord_fixed() +
+    ggtitle(title_lab) +
+    ylab(y_lab) + xlab(" ")+
+    theme_minimal() + theme(plot.title = element_text(hjust = 0.5))
+  
+  return(pt_dens_plot)
+}
+
+
+single_dog_track <- function(tracks, dog, run, var1, var2){
+  dat <- na.omit(tracks[tracks$dog == dog & tracks$run == run & 
+                          tracks$point == "nose",])
+  dat$task <- ifelse(dat$task == "t", "Off-task", 
+                     ifelse(dat$task == "c", "Casting",
+                            ifelse(dat$task == "o", "Localizing", "Alerting")))
+  dat$task <- factor(dat$task, ordered = T, levels = c("Off-task", "Casting", 
+                                                       "Localizing", "Alerting"))
+  if(run == 1){ 
+    y_lab <- "Vertical distance"
+    methylbenzoate <- trial_holes[8, ]
+    blank <- trial_holes[7, ]
+    bromooctane <- trial_holes[9, ]
+    hot <-  trial_holes[6, ]
+    chem <- "2E1H"
+    success <- ifelse(was_run_successful(dog,chem), "Successful", "Unsuccessful")
+  } else{
+    y_lab <- "Vertical distance"
+    methylbenzoate <- trial_holes[7, ]
+    blank <- trial_holes[8, ]
+    bromooctane <- trial_holes[6, ]
+    hot <-  trial_holes[9, ]
+    chem <- "NH3"
+    success <- ifelse(was_run_successful(dog,"Ammonia"), "Successful", "Unsuccessful")
+  }
+  p <- ggplot(na.omit(dat[order(dat$time),]), aes(x = .data[[var1]], 
+                                                  y = .data[[var2]], 
+                                                  shape = .data[["task"]],
+                                                  color = .data[["time"]])) +
+    geom_point(size = 2) + geom_path() + 
+    scale_shape_manual(name = "task", values = c(15, 19, 17, 18), drop = F) + 
+    #scale_fill_viridis(limits = c(0, 21), name = "density", discrete = F) + 
+    #scale_alpha_continuous(limits = c(-10, 10), name = "", guide = "none") + 
+    geom_point(data = blank, mapping = aes(.data[[var1]], .data[[var2]], 
+                                           color = NULL, 
+                                           shape = NULL), 
+               fill = "gray80", size = 3, pch = 21) + 
+    geom_point(data = methylbenzoate, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                    color = NULL, 
+                                                    shape = NULL), 
+               fill = "darkorange3", size = 3, pch = 21) + 
+    geom_point(data = bromooctane, mapping = aes(.data[[var1]], .data[[var2]], 
+                                                 color = NULL, 
+                                                 shape = NULL), 
+               fill = "darkorange3", size = 3, pch = 21) + 
+    geom_point(data = hot, mapping = aes(.data[[var1]], .data[[var2]], 
+                                         color = NULL, 
+                                         shape = NULL), 
+               fill = "red", size = 3, pch = 21) +
+    xlim(-1.1, 0.5) + ylim(-0.4, 0.5) +
+    coord_fixed() +
+    ggtitle(paste0("Dog: ", dog, ", target: ", chem, " -- ", success)) +
+    ylab(y_lab) + xlab("Along face of wall") +
+    theme_minimal() + theme(plot.title = element_text(hjust = 0.5))
+  return(p)
+}
+
 
 #### Constants #### 
 

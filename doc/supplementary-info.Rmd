@@ -1,10 +1,13 @@
 ---
 title: "Supplemental Information to `Physical properties of odorants affect behavior of trained detection dogs during close-quarters searches'"
 author: 
- - Daniel Mejia^1^, Lydia Burnett^2^, Nicholas Hebdon^1^, Peter Stevens^3^, Alexis Shiber^1^, Clay Cranston^1^, Lauryn DeGreeff^2^, and Lindsay D. Waldrop^1^ 
+ - Daniel Mejia^1^, Lydia Burnett^2^, Nicholas Hebdon^1^, Peter Stevens^3^, Alexis Shiber^1^, 
+ - Clay Cranston^1^, Lauryn DeGreeff^2^, and Lindsay D. Waldrop^1^ 
 date: "`r Sys.Date()`"
 output: 
   bookdown::pdf_document2:
+    includes: 
+      in_header: header.tex
     number_sections: false
     toc: false
     keep_tex: yes
@@ -17,23 +20,78 @@ library(knitr)
 library(tidyr)
 library(kableExtra)
 knitr::opts_chunk$set(echo = TRUE, fig.width=8)
-options(knitr.graphics.error = FALSE)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+options(knitr.graphics.error = FALSE)
 wd <- getwd()
 filepath1 <- file.path(here::here(), "figures", "Trialbox1.png")
 ```
- 
+
  1. Schmid College of Science and Technology, Chapman University
  2. Global Forensic and Justice Center and Department of Chemistry and Biochemistry, Florida International University
  3. The Scentsable K9, El Cajon, CA
 
 Corresponding author: L.D. Waldrop waldrop@chapman.edu
 
+```{r results_code, include=FALSE}
+# Loading required libraries
+library(knitr)
+library(tidyr)
+library(kableExtra)
+library(ggplot2)
+library(patchwork)
+library(viridis)
+library(cluster)
+
+# Loading required functions:
+source("./src/kinematic_fxns.R")
+
+hole_bump_x <- 0.01
+hole_bump_z <- 0.06
+chem_colors <- c("#F3C8C0", "#BC8DA6")
+task_labs <- c("Off task", "Casting", "Localizing", "Alert")
+state_behavior_labels <- c("Jumping", "Look at handler", "Pawing", "Sniffing")
+point_behavior_labels <- c("Chest tightness", "Eye convergence", "Facial tensing",
+                           "Head turn", "Lip lick", "Ear prick", "Head snap", 
+                           "Tail wag")
+
+#To rerun kinematic track analysis, uncomment the following line: 
+#source("./src/kinematics_paper_analysis.R")
+
+# And change the date to today's date:
+analysis_date <- "2023-12-21"
+
+# Loads previously analyzed data:
+tracks <- read.csv(paste0("./results/csv-files/kinematics-final-tracks_", analysis_date, 
+                          ".csv"))
+tracks$task <- factor(tracks$task, levels = c("t", "c", "o", "a"))
+trial_holes <- read.csv(paste0("./results/csv-files/trial_holes_", analysis_date, 
+                               ".csv"))
+trial_holes$x <- trial_holes$x + hole_bump_x
+trial_holes$z <- trial_holes$z + hole_bump_z
+dog_mean_hot_dist <- read.csv(paste0("./results/csv-files/dog-mean-hot-dist_", 
+                                     analysis_date, ".csv"))
+
+dog_mean_total_task_time <- read.csv(paste0("./results/csv-files/dog-mean-total-task-time_",
+                                            analysis_date, ".csv"))
+dog_mean_total_task_time$dog <- factor(dog_mean_total_task_time$dog)
+dog_mean_total_task_time$chemical <- factor(dog_mean_total_task_time$chemical)
+dog_mean_total_task_time$task <- factor(dog_mean_total_task_time$task, levels = c("t", "c", "o", "a"))
+
+dog_mean_event_times <- read.csv(paste0("./results/csv-files/dog-mean-event-times_",
+                                            analysis_date, ".csv"))
+
+dog_point_counts <-  read.csv(paste0("./results/csv-files/dog-point-counts_",
+                                            analysis_date, ".csv"))
+
+alerts <-  read.csv("./data/alert_success.csv")
+alerts$dog <- factor(alerts$dog)
+alerts$chemical <-factor(alerts$chemical)
+```
 
 
 ## Methods
 
-#### Materials 
+### Materials 
 
 Ammonium hydroxide (Sigma-Aldrich) and 2-etyhyl-1-hexanol (Sigma-Aldrich) were selected as the two target odorants of interest due to differences in their physical properties (Table \@ref(tab:chem-table)).
 
@@ -42,10 +100,12 @@ properties <- data.frame("Property" = c("Molecular weight (g mol$^{-1}$)",
                                         "Diffusion coefficent (cm$^2$ s $^{-1}$)",
                                         "Vapor pressure (atm)"), 
                         "2E1H" = c("130.23", "0.0663", "0.000179"), 
-                        "NH3" = c( "17.031", "0.2403", "9.9"))
-kable(properties, "simple", col.names = c("Property", "2E1H", "NH$_3$"), 
+                        "NH3" = c( "17.031", "0.2403", "9.9"),
+                        "bromooctane" = c("193.13", "0.0591", "0.000500"),
+                        "methyl benzoate" = c("136.15", "0.0711", "0.000447"))
+kable(properties, "simple", col.names = c("Property", "2E1H", "NH$_3$", "Bromo-octane", "Methyl benzoate"), 
       align = "c", row.names = F,
-      caption="Physical properties of the two target odorant chemicals, 2-ethyl-1-hexanol (2E1H) and ammonia (NH$_3$): molecular weight, diffusion coefficient and vapor pressure.")
+      caption="Physical properties of the two target odorant chemicals and two distractor chemicals used in the study: molecular weight, diffusion coefficient and vapor pressure.")
 ```
 
 In order to train the two different target odors, handlers were given controlled odor mimic permeation systems (COMPS) as training aids. COMPS are a tool that controls odor availability during training. For this study, each COMPS consists of 20 $\mu$L of analyte pipetted onto a 2 inch by 2 inch piece of cotton-blend gauze pad (Dukal, LLC) which was heat-sealed in a 2 by 3 inch plastic bag. The analyte is released at a rate determined by the thickness and surface area of the bag [@simon2019]. In order to equalize the amount of 2E1H and ammonia presented to the canine during training, a 3 MIL low density polyethylene bag (LDPE; Uline) was used 2E1H and a 8 MIL LDPE bag (Uline) was used for ammonia. Non-target or distractor odorants were prepared in a similar way for methyl benzoate (Sigma-Aldrich; 3 MIL bag) and bromooctane (Sigma-Aldrich; 8 MIL bag).
@@ -53,7 +113,7 @@ In order to train the two different target odors, handlers were given controlled
 
 ### Participants 
 
-Fourteen civilian canines were recruited through the National Association of Canine Scent Work (NACSW)(TM). NACSW canines train to detect essential oils for competition. Canines recruited from Nosework 3 title or higher. Dogs at this level are trained to detect multiple odor sources, trials with blanks, and in various search situations.
+Fourteen civilian canines were recruited through the National Association of Canine Scent Work (NACSW)\texttrademark. NACSW canines train to detect essential oils for competition. Canines recruited from Nosework 3 title or higher. Dogs at this level are trained to detect multiple odor sources, trials with blanks, and in various search situations.
 
 Three small dogs ($< 30$ lbs) and eleven large dogs ($\geq 30$ lbs) were included of all different breeds (Table \@ref(tab:breed-table)). The handlers were not compensated for participation. The study observed all federal, state, and local regulations on the use of vertebrate animals in research (FIU IACUC protocol #201314).
 
@@ -86,10 +146,11 @@ Dogs were allowed to search a similar imprinting wall with a Nosework odor sourc
 
 ```{r trial-box, echo=FALSE, out.width="95%", fig.cap="Trial walls used for the experiment showing the relative placement of imprinting holes. Left: large wall, right: small wall. Left image shows side and top camera set up for capturing video data. Leashed dogs were allowed to interact with the wall freely. Photos by Monica Moljo."}
 include_graphics(file.path(here::here(), "doc", "figures","trialbox2.png"))
+#include_graphics(file.path(here::here(), "doc", "kinematics-paper", "figures","small_trial_box.png"))
 ```
 
 ```{r top-side-view, echo=FALSE, out.width="95%", fig.cap="Side (left) and top (right) views of the cameras during a search."}
-include_graphics(file.path(here::here(), "doc","figures","top-side-view.png"))
+include_graphics(file.path(here::here(), "doc", "figures","top-side-view.png"))
 ```
 
 Two video cameras (GoPro Hero 8 Black, GoPro, San Mateo, CA) were placed in view of the front of the wall where dogs interacted with odors, one above the holes and one to the right side of the trial wall, resulting in a top view and side view, respectively (Figure \@ref(fig:top-side-view)). Cameras were placed in linear mode using 30 frames per second to record at 4K resolution. Cameras ran continuously for the time that the dogs interacted with the wall area. Videos were calibrated with a three-dimensional calibration object on sight immediately before running dogs in the trial and for each wall (large and small). Cameras were synced using a verbal cue and aligned using iMovie during analysis. Calibration footage was taken each time the cameras were initially set up or moved. 
@@ -153,6 +214,883 @@ Statistical analyses of search stage and behavior data was performed in R versio
 To compare where the dogs concentrated their efforts during different types of behavior, a cluster comparison for two behavior types (casting and localizing) was performed. Clusters were identified with a k-means analysis using the k-means  function in base R. K-means clustering is a method that reduces the within cluster variance relative to the clusters’ mean for a specified number of groups [@Hartigan_Wong_1979]. K-means quantification requires the user to specify the number of clusters to be found. In this analysis a cluster would equate to a high density zone of a given behavior. For our experimental configuration this was set to five, one per odor hole and one additional for background/off-wall behavior. 
 
 To evaluate the accuracy of this clustering scheme for each chemical relative to our expectation we then calculated the gap statistic of each cluster using the function `clusGap` from cluster package was then calculated [@clusterpkg]. The gap statistic summarized the distance of the pooled sum of the squares for a cluster relative to that data under a null distribution [@tibshirani_estimating_2001]. The higher the gap statistic, the more defined a cluster is. Gap statistics are often used to search for the optimal number of clusters in the system but here were used to compare the performance of a single clustering configuration for each target chemical to assess how centralized the behaviors of the dogs are in their search.
+
+### Full reproduction of analysis included in the main manuscript and supplemental infomration documents
+
+The analysis for this study was completed in RStudio version 2023.06.0+421 (2023.06.0+421) using the R Markdown and R Bookdown packages in fully reproducible code notebooks (RMD files). All figures and analyses are available in the Github repository: https://github.com/lindsaywaldrop/odor-plume-search. Detailed instructions can be found in the README file. 
+
+In order to reproduce these documents, use RStudio to open a new project based on version control and clone the project using the repository's web URL. Alternatively, download the code release indicated on the Github repository's site, expand the compressed file, and open the included .Rproj file in RStudio. There are a number of packages to install, which can be installed using the install-required-pkgs.R script in the src/ folder. Then, open the main-manuscript.Rmd or supplementary-info.Rmd files in the doc/ folder and knit. 
+
+## Results 
+
+### Additional Analysis: Before and after training on target odors
+
+Dogs in the study were previously trained on NACSW nose work odors which are three essential oils (birch, anise, clove) and were well versed in searching for these target odors before the study. However, no dogs except one had previous training with the two target odors in the study (2E1H and NH~3~). During the study, dogs were tested on the wall before training for the study's target odors ("untrained") and then after six weeks of training at home ("trained"). 
+
+The following figures contrast the results of kinematic and behavior analyses between untrained and trained dogs. Note that the sample size for each varies because two dogs in the initial trial were unable to participate in the final trial. Additionally, not all dogs engaged in every phase of search behavior during their runs, leading to different sample sizes between bars.
+
+```{r k-mean-calcs-training, include=FALSE}
+# K means clustering analysis
+set.seed(15)
+scaled_tracks <- na.omit(tracks[tracks$point == "nose", 
+                                c("x","y","z", "task", "run", "trained")])
+scaled_tracks$x <- (scaled_tracks$x - min(scaled_tracks$x))/(max(scaled_tracks$x)-min(scaled_tracks$x))
+scaled_tracks$y <- (scaled_tracks$y - min(scaled_tracks$y))/(max(scaled_tracks$y)-min(scaled_tracks$y))
+scaled_tracks$z <- (scaled_tracks$z - min(scaled_tracks$z))/(max(scaled_tracks$z)-min(scaled_tracks$z))
+
+cluster_2E1H_casting_trained <- calc_kmeans(scaled_tracks[scaled_tracks$trained == T,], 
+                                    1, "c", 5)
+cluster_2E1H_detailing_trained <- calc_kmeans(scaled_tracks[scaled_tracks$trained == T,],
+                                                1, "o", 5)
+cluster_Amm_casting_trained <- calc_kmeans(scaled_tracks[scaled_tracks$trained == T,], 
+                                           2, "c", 5)
+cluster_Amm_detailing_trained <- calc_kmeans(scaled_tracks[scaled_tracks$trained == T,],
+                                             2, "o", 5)
+
+
+cluster_2E1H_casting_untrained <- calc_kmeans(scaled_tracks[scaled_tracks$trained == F,],
+                                              1, "c", 5)
+cluster_2E1H_detailing_untrained <- calc_kmeans(scaled_tracks[scaled_tracks$trained == F,],
+                                                1, "o", 5)
+cluster_Amm_casting_untrained <- calc_kmeans(scaled_tracks[scaled_tracks$trained == F,], 
+                                           2, "c", 5)
+cluster_Amm_detailing_untrained <- calc_kmeans(scaled_tracks[scaled_tracks$trained == F,],
+                                             2, "o", 5)
+
+```
+
+```{r data-setup-density-plots-training, include=FALSE}
+dat_2E1H_casting_untrained <- na.omit(tracks[tracks$point == "nose" & 
+                                     tracks$trained == F &
+                                     tracks$run == 1 & 
+                                     tracks$task == "c",])
+dat_2E1H_casting_untrained$cluster <- factor(cluster_2E1H_casting_untrained$cluster_points)
+
+dat_2E1H_casting_trained <- na.omit(tracks[tracks$point == "nose" & 
+                                     tracks$trained == T &
+                                     tracks$run == 1 & 
+                                     tracks$task == "c",])
+dat_2E1H_casting_trained$cluster <- factor(cluster_2E1H_casting_trained$cluster_points)
+
+
+dat_2E1H_detailing_untrained <- na.omit(tracks[tracks$point == "nose" & 
+                                       tracks$trained == F &
+                                       tracks$run == 1 & 
+                                       tracks$task == "o",])
+dat_2E1H_detailing_untrained$cluster <- factor(cluster_2E1H_detailing_untrained$cluster_points)
+
+dat_2E1H_detailing_trained <- na.omit(tracks[tracks$point == "nose" & 
+                                       tracks$trained == T &
+                                       tracks$run == 1 & 
+                                       tracks$task == "o",])
+dat_2E1H_detailing_trained$cluster <- factor(cluster_2E1H_detailing_trained$cluster_points)
+
+dat_Amm_casting_untrained <- na.omit(tracks[tracks$point == "nose" & 
+                                    tracks$trained == F &
+                                    tracks$run == 2 & 
+                                    tracks$task == "c",])
+dat_Amm_casting_untrained$cluster <- factor(cluster_Amm_casting_untrained$cluster_points)
+
+dat_Amm_casting_trained <- na.omit(tracks[tracks$point == "nose" & 
+                                    tracks$trained == T &
+                                    tracks$run == 2 & 
+                                    tracks$task == "c",])
+dat_Amm_casting_trained$cluster <- factor(cluster_Amm_casting_trained$cluster_points)
+
+dat_Amm_detailing_untrained <- na.omit(tracks[tracks$point == "nose" & 
+                                                tracks$trained == F &
+                                                tracks$run == 2 & 
+                                                tracks$task == "o",])
+dat_Amm_detailing_untrained$cluster <- factor(cluster_Amm_detailing_untrained$cluster_points)
+
+dat_Amm_detailing_trained <- na.omit(tracks[tracks$point == "nose" & 
+                                                tracks$trained == T &
+                                                tracks$run == 2 & 
+                                                tracks$task == "o",])
+dat_Amm_detailing_trained$cluster <- factor(cluster_Amm_detailing_trained$cluster_points)
+```
+
+```{r frontwall-casting-training, echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Point-density plots (a and b) and k-means clustering plots (c and d) of the front view of trial wall during casting stage for 2E1H (a, c) and NH~3~ (b, d) for only successful searches. Location of imprinting source holes marked with colored circles (red indicates location of target odorant, blue are distractors, gray is blank)."}
+
+p2E1H_casting_cluster_untrained <- cluster_plot(dat_2E1H_casting_untrained, trial_holes, 
+                                     "x", "z", 
+                                     "2E1H", "2E1H (untrained)")
+p2E1H_casting_cluster_trained <- cluster_plot(dat_2E1H_casting_trained, trial_holes, 
+                                     "x", "z", 
+                                     "2E1H", "2E1H (trained)")
+
+pAmm_casting_cluster_untrained <- cluster_plot(dat_Amm_casting_untrained, trial_holes, 
+                                     "x", "z", 
+                                     "NH3", "NH3 (untrained)")
+pAmm_casting_cluster_trained <- cluster_plot(dat_Amm_casting_trained, trial_holes, 
+                                     "x", "z", 
+                                     "NH3", "NH3 (trained)")
+
+  
+( p2E1H_casting_cluster_untrained + pAmm_casting_cluster_untrained ) /
+  ( p2E1H_casting_cluster_trained + pAmm_casting_cluster_trained ) +
+  plot_annotation(tag_levels = "a") + 
+  theme(plot.tag = element_text(face = 'bold')) +
+  plot_layout(guides = "collect")
+
+```
+
+Cluster plots of untrained and trained dogs in casting shows that patterns of movement are similar between 2E1H and NH~3~ before training (Fig. \@ref(fig:frontwall-casting-training)a, b) and show much more spread movements after training (Fig. \@ref(fig:frontwall-casting-training)c, d). k-mean gap scores are low, (range: `r round(range(cluster_2E1H_casting_untrained$cluster_data$gap, cluster_2E1H_casting_trained$cluster_data$gap, cluster_Amm_casting_untrained$cluster_data$gap, cluster_Amm_casting_trained$cluster_data$gap), digits = 2)`) with the highest scores for 2E1H untrained tracks. 
+
+
+```{r frontwall-detailing-training, fig.cap="Point-density plots (a and b) and k-means clustering plots (c and d) of the front view of trial wall during localizing stage for 2E1H (a, c) and NH~3~ (b, d) for only successful searches. Location of imprinting source holes marked with colored circles (red indicates location of target odorant, blue are distractors, gray is blank).", echo=FALSE, warning=FALSE, message = FALSE}
+
+p2E1H_detailing_cluster_untrained <- cluster_plot(dat_2E1H_detailing_untrained,
+                                                        trial_holes, 
+                                                        "x", "z",  
+                                                        "2E1H", "2E1H (untrained)")
+p2E1H_detailing_cluster_trained <- cluster_plot(dat_2E1H_detailing_trained,
+                                                        trial_holes, 
+                                                        "x", "z",  
+                                                        "2E1H", "2E1H (trained)")
+
+
+pAmm_detailing_cluster_untrained <- cluster_plot(dat_Amm_detailing_untrained, trial_holes, 
+                                       "x", "z",
+                                       "NH3", "NH3 (untrained)")
+
+pAmm_detailing_cluster_trained <- cluster_plot(dat_Amm_detailing_trained, trial_holes, 
+                                       "x", "z",
+                                       "NH3", "NH3 (trained)")
+  
+( p2E1H_detailing_cluster_untrained + pAmm_detailing_cluster_untrained ) /
+  ( p2E1H_detailing_cluster_trained + pAmm_detailing_cluster_trained ) + 
+  plot_annotation(tag_levels = "a") + 
+  theme(plot.tag = element_text(face = 'bold')) +
+  plot_layout(guides = "collect")
+
+```
+
+For localizing, there are large and obvious differences between untrained and trained trial runs (SI Fig. \@ref(fig:frontwall-detailing-training)). Many of the dogs before training did not engaging in localizing behaviors at all, with only two and three dogs engaging in search behavior in the kinematic search area.  There are no significant differences in distance from the target-odor source before training (SI Fig. \@ref(fig:hole-times-training)a) but significant differences after training (SI Fig. \@ref(fig:hole-times-training)c).
+
+```{r hole-time-stats-trained, include=FALSE}
+dog_mean_hot_dist$value <- dog_mean_hot_dist$hot_dist
+dog_mean_hot_dist_trained <- dog_mean_hot_dist[dog_mean_hot_dist$trained == T,]
+dog_mean_hot_dist_untrained <- dog_mean_hot_dist[dog_mean_hot_dist$trained == F,]
+dog_mean_total_task_time_trained <- dog_mean_total_task_time[dog_mean_total_task_time$trained == T,]
+dog_mean_total_task_time_untrained <- dog_mean_total_task_time[dog_mean_total_task_time$trained == F,]
+
+t.test(dog_mean_total_task_time_untrained$value[dog_mean_total_task_time_untrained$task == "c" & dog_mean_total_task_time_untrained$chemical == "2E1H"],
+       dog_mean_total_task_time_untrained$value[dog_mean_total_task_time_untrained$task == "o" & dog_mean_total_task_time_untrained$chemical == "2E1H"])
+
+t.test(dog_mean_total_task_time_untrained$value[dog_mean_total_task_time_untrained$task == "c" & dog_mean_total_task_time_untrained$chemical == "Ammonia"],
+       dog_mean_total_task_time_untrained$value[dog_mean_total_task_time_untrained$task == "o" & dog_mean_total_task_time_untrained$chemical == "Ammonia"])
+```
+```{r hole-times-training, echo=FALSE, fig.width = 6.5, fig.height = 6.25, fig.cap="Mean distance the dogs occupied in the casting and localizing stages of search (a,c) as well as the mean time they spent within 10 cm of the source of each chemical (b,d) for dogs before training (a, b) and after six weeks of training (c, d). Single black filled circles represent outliers to the boxplot. Sample size is recorded if other than n = 11.  * represents a comparison where the p < 0.05."}
+
+p1 <- ggplot(dog_mean_hot_dist_untrained[dog_mean_hot_dist_untrained$task == "c" | dog_mean_hot_dist_untrained$task == "o",], aes(task, value, fill = chemical)) + 
+  geom_boxplot() +
+  geom_point(position = position_jitterdodge(jitter.width = 0.2), pch = 21, alpha = 0.4) +
+  annotate(geom = "text", x = 0.60, y = 0.0, label = "n = ",  size = 3) +
+  annotate(geom = "text", x = 0.80, y = 0.0, label = "10",  size = 3) +
+  annotate(geom = "text", x = 1.15, y = 0.0, label = "13",  size = 3) +
+  annotate(geom = "text", x = 1.85, y = 0.0, label = "3",  size = 3) +
+  annotate(geom = "text", x = 2.15, y = 0.0, label = "2",  size = 3) +
+  scale_fill_manual(values = c(chem_colors[1], chem_colors[2]), name = "Target odor",
+                    labels = c("2E1H", bquote(NH[3]))) +
+  scale_x_discrete(labels = c("Casting", "Localizing")) +
+  ylab("Mean distance from target\nodor source (m)") + xlab(" ") +
+  ggtitle("Untrained") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position="bottom")
+
+p2 <- ggplot(dog_mean_total_task_time_untrained, aes(task, value, fill = chemical)) +
+  geom_boxplot() + 
+  geom_point(position = position_jitterdodge(jitter.width = 0.2), pch = 21, alpha = 0.4) +
+  annotate(geom = "text", x = 0.75, y = -3.5, label = "n = ",  size = 3) +
+  annotate(geom = "text", x = 2.80, y = -3.5, label = "8",  size = 3) +
+  annotate(geom = "text", x = 3.25, y = -3.5, label = "6",  size = 3) +
+  annotate(geom = "text", x = 3.75, y = -3.5, label = "1",  size = 3) +
+  annotate(geom = "text", x = 4.25, y = -3.5, label = "0",  size = 3) +
+  scale_fill_manual(values = c(chem_colors[1], chem_colors[2]), name = "Target odor", 
+                    guide = "none") +
+  scale_x_discrete(labels = task_labs) +
+  annotate(geom = "text", x = 2.70, y = 32, label = "*",  size = 6) +
+  annotate(geom = "line", x = c(2.20, 3.25), y = c(30, 30),  linewidth = 1) +
+  annotate(geom = "text", x = 2.25, y = 45, label = "*",  size = 6) +
+  annotate(geom = "line", x = c(1.75, 2.75), y = c(42, 42),  linewidth = 1) +
+  #ylim(-5, 60) + 
+  ylab("Mean time spent in\nbehavioral state (s)") + xlab(" ") +
+  ggtitle("Untrained") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position="bottom")
+
+p3 <- ggplot(dog_mean_hot_dist_trained[dog_mean_hot_dist_trained$task == "c" | dog_mean_hot_dist_trained$task == "o",], aes(task, value, fill = chemical)) + 
+  geom_boxplot() +
+  geom_point(position = position_jitterdodge(jitter.width = 0.2), pch = 21, alpha = 0.4) +
+  annotate(geom = "text", x = 0.60, y = 0.0, label = "n = ",  size = 3) +
+  #annotate(geom = "text", x = 0.85, y = 0.0, label = "11",  size = 3) +
+  annotate(geom = "text", x = 1.15, y = 0.0, label = "10",  size = 3) +
+  annotate(geom = "text", x = 1.85, y = 0.0, label = "10",  size = 3) +
+  annotate(geom = "text", x = 2.15, y = 0.0, label = "10",  size = 3) +
+  scale_fill_manual(values = c(chem_colors[1], chem_colors[2]), name = "Target odor",
+                    labels = c("2E1H", bquote(NH[3]))) +
+  annotate(geom = "text", x = 1.7, y = 1, label = "*",  size = 6) +
+  annotate(geom = "line", x = c(1.15, 2.25), y = c(0.95, 0.95),  linewidth = 1) +
+  annotate(geom = "text", x = 1, y = 1.07, label = "*",  size = 6) + 
+  annotate(geom = "line", x = c(0.75, 1.25), y = c(1.02, 1.02), linewidth = 1) +
+  scale_x_discrete(labels = c("Casting", "Localizing")) +
+  ylab("Mean distance from target\nodor source (m)") + xlab(" ") +
+  ggtitle("Trained") +
+  ylim(0, 1.1) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position="bottom")
+
+p4 <- ggplot(dog_mean_total_task_time_trained, aes(task, value, fill = chemical)) +
+  geom_boxplot() + 
+  geom_point(position = position_jitterdodge(jitter.width = 0.2), pch = 21, alpha = 0.4) +
+  annotate(geom = "text", x = 0.75, y = -3.5, label = "n = ",  size = 3) +
+  annotate(geom = "text", x = 3.75, y = -3.5, label = "4",  size = 3) +
+  annotate(geom = "text", x = 4.25, y = -3.5, label = "10",  size = 3) +
+  scale_fill_manual(values = c(chem_colors[1], chem_colors[2]), name = "Target odor", 
+                    guide = "none") +
+  scale_x_discrete(labels = task_labs) +
+  annotate(geom = "text", x = 3, y = 18, label = "*",  size = 6) +
+  annotate(geom = "line", x = c(2.75, 3.25), y = c(17, 17),  linewidth = 1) +
+  annotate(geom = "text", x = 2.25, y = 26, label = "*",  size = 6) +
+  annotate(geom = "line", x = c(1.75, 2.75), y = c(25, 25),  linewidth = 1) +
+  #ylim(-5, 60) + 
+  ylab("Mean time spent in\nbehavioral state (s)") + xlab(" ") +
+  ggtitle("Trained") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position="bottom")
+
+((p1 + p2) / (p3 + p4) /guide_area() )+ plot_annotation(tag_levels = "a") + 
+  plot_layout(guides = "collect", heights = c(4, 4, 0.01)) & 
+  theme(legend.position='bottom', plot.tag = element_text(face = 'bold'))
+```
+
+\newpage
+
+### Additional Analysis: Removing unsuccessful searches from density and k-mean plots
+
+It is possible that the searches of successful dogs were significantly different than unsuccessful searches, or that these patterns may reveal some important insight to the problem of how searching with success may affect the kinematic analysis from the main manuscript. To investigate these, we removed unsuccessful searches from the k-means analysis and the following visualizations. 
+
+```{r remove-failed-searches, include=FALSE}
+# Pulls info on which dog and run had success. 
+successful_searches <- alerts[alerts$success == T,]
+tracks <- tracks[tracks$trained == T,]
+# Loops through each row of the kinematic tracks to find rows where the dog and run match with 
+# the successful searches from above.
+tracks_save_row <- c()
+for(k in 1:nrow(tracks)){
+  for(i in 1:nrow(successful_searches)){
+    if(tracks[k, "dog"] == successful_searches[i, "dog"] &
+       tracks[k, "run"] == successful_searches[i, "run"]) {
+      tracks_save_row <- c(tracks_save_row, k)
+    }
+  }
+}
+
+# Prunes data to only include successful searches
+select_tracks <- tracks[tracks_save_row,]
+
+```
+
+```{r k-mean-calcs-successful, include=FALSE}
+# K means clustering analysis
+set.seed(15)
+scaled_tracks <- na.omit(select_tracks[select_tracks$point == "nose", c("x","y","z","task","run")])
+scaled_tracks$x <- (scaled_tracks$x - min(scaled_tracks$x))/(max(scaled_tracks$x)-min(scaled_tracks$x))
+scaled_tracks$y <- (scaled_tracks$y - min(scaled_tracks$y))/(max(scaled_tracks$y)-min(scaled_tracks$y))
+scaled_tracks$z <- (scaled_tracks$z - min(scaled_tracks$z))/(max(scaled_tracks$z)-min(scaled_tracks$z))
+
+cluster_2E1H_casting <- calc_kmeans(scaled_tracks, 1, "c", 5)
+cluster_2E1H_detailing <- calc_kmeans(scaled_tracks, 1, "o", 5)
+cluster_Amm_casting <- calc_kmeans(scaled_tracks, 2, "c", 5)
+cluster_Amm_detailing <- calc_kmeans(scaled_tracks, 2, "o", 5)
+```
+
+```{r data-setup-density-plots, include=FALSE}
+dat_2E1H_casting <- na.omit(select_tracks[select_tracks$point == "nose" & select_tracks$run == 1 & 
+                                     select_tracks$task == "c",])
+dat_2E1H_casting$cluster <- factor(cluster_2E1H_casting$cluster_points)
+
+dat_2E1H_detailing <- na.omit(select_tracks[select_tracks$point == "nose" & select_tracks$run == 1 & 
+                                       select_tracks$task == "o",])
+dat_2E1H_detailing$cluster <- factor(cluster_2E1H_detailing$cluster_points)
+
+dat_Amm_casting <- na.omit(select_tracks[select_tracks$point == "nose" & select_tracks$run == 2 & 
+                                    select_tracks$task == "c",])
+dat_Amm_casting$cluster <- factor(cluster_Amm_casting$cluster_points)
+
+dat_Amm_detailing <- na.omit(select_tracks[select_tracks$point == "nose" & select_tracks$run == 2 & 
+                                      select_tracks$task == "o",])
+dat_Amm_detailing$cluster <- factor(cluster_Amm_detailing$cluster_points)
+```
+
+```{r frontwall-casting, fig.cap="Point-density plots (a and b) and k-means clustering plots (c and d) of the front view of trial wall during casting stage for 2E1H (a, c) and NH~3~ (b, d) for only successful searches. Location of imprinting source holes marked with colored circles (red indicates location of target odorant, blue are distractors, gray is blank).", echo=FALSE, warning=FALSE}
+
+p2E1H_casting_density <- point_density_plot(dat_2E1H_casting, trial_holes,
+                                           "x", "z",  
+                                           10,"2E1H", "2E1H")
+pAmm_casting_density <- point_density_plot(dat_Amm_casting, trial_holes,
+                                           "x", "z", 
+                                           10,"NH3", bquote(NH[3]))
+
+
+p2E1H_casting_cluster <- cluster_plot(dat_2E1H_casting, trial_holes, 
+                                     "x", "z", 
+                                     "2E1H")
+
+pAmm_casting_cluster <- cluster_plot(dat_Amm_casting, trial_holes, 
+                                     "x", "z", 
+                                     "NH3")
+
+  
+( p2E1H_casting_density + pAmm_casting_density ) /
+  ( p2E1H_casting_cluster + pAmm_casting_cluster ) +
+  plot_annotation(tag_levels = "a") + 
+  theme(plot.tag = element_text(face = 'bold')) +
+  plot_layout(guides = "collect")
+
+```
+
+SI Fig. \@ref(fig:frontwall-casting) show the density maps of casting across all runs for both target odors for successful searches only. Similar to the main manuscript's analysis, casting occurred in a similar way, although successful searches for 2E1H tended to be vertically lower than the density of points from all searches (Fig. \@ref(fig:frontwall-casting)), although dogs were found to sniff below the holes more for NH~3~ than 2E1H. K-mean gap scores for clusters were overall lower for both 2E1H (`r round(min(cluster_2E1H_casting$cluster_data$gap), digits = 2)` to `r round(max(cluster_2E1H_casting$cluster_data$gap), digits = 2)`) and NH~3~ (`r round(min(cluster_Amm_casting$cluster_data$gap), digits = 2)` to `r round(max(cluster_Amm_casting$cluster_data$gap), digits = 2)`) than the k-mean gap scores run with all searches. Since there were only two successful searches for 2E1H, this limits the reliability of the k-mean gap scores. 
+
+
+```{r frontwall-detailing, fig.cap="Point-density plots (a and b) and k-means clustering plots (c and d) of the front view of trial wall during localizing stage for 2E1H (a, c) and NH~3~ (b, d) for only successful searches. Location of imprinting source holes marked with colored circles (red indicates location of target odorant, blue are distractors, gray is blank).", echo=FALSE, warning=FALSE}
+
+p2E1H_detailing_density <- point_density_plot(dat_2E1H_detailing, trial_holes, 
+                                              "x", "z",  
+                                              18,"2E1H", "2E1H")
+
+pAmm_detailing_density <- point_density_plot(dat_Amm_detailing, trial_holes, 
+                                              "x", "z", 
+                                              18,"NH3", bquote(NH[3]))
+
+p2E1H_detailing_cluster <- cluster_plot(dat_2E1H_detailing, trial_holes, 
+                                        "x", "z",
+                                       "2E1H") 
+
+pAmm_detailing_cluster <- cluster_plot(dat_Amm_detailing, trial_holes, 
+                                       "x", "z",
+                                       "NH3") 
+  
+( p2E1H_detailing_density + pAmm_detailing_density ) /
+  ( p2E1H_detailing_cluster + pAmm_detailing_cluster ) + 
+  plot_annotation(tag_levels = "a") + 
+  theme(plot.tag = element_text(face = 'bold')) +
+  plot_layout(guides = "collect")
+
+```
+
+Like the full data set, SI Fig. \@ref(fig:frontwall-detailing) reflects the same smaller search area in the localizing point density of 2E1H, with the searching highly localized to the holes of the wall and little deviation from the wall's face. Clustering scores  correspond to the four source holes of the wall (Fig. \@ref(fig:frontwall-detailing)C) with gap scores of `r round(cluster_2E1H_detailing$cluster_data$gap, digits=2)`. In contrast, NH~3~ localizing, while close to the surface of the wall, was spread both above and below the holes, showing clusters that were less distinct and not associated with individual holes (gap scores: `r round(cluster_Amm_detailing$cluster_data$gap[2], digits=2)` to `r round(max(cluster_Amm_detailing$cluster_data$gap[5]), digits = 2)`). 
+
+Although there are some superficial differences, removing the successful searches point to the same patterns of movement of dogs engaged in the search. 
+
+\newpage
+
+### Additional Analysis: Removing unsuccessful dogs (12, 14, and 24) from statistical analysis
+
+```{r stats-calc, include=FALSE}
+dog_mean_hot_dist <- dog_mean_hot_dist[dog_mean_hot_dist$trained == T,]
+remove_dogs <- which(dog_mean_hot_dist$dog == 12 | dog_mean_hot_dist$dog == 14 |
+                       dog_mean_hot_dist$dog == 24)
+dog_mean_hot_dist2 <- dog_mean_hot_dist[-remove_dogs, ]
+dog_mean_hot_dist$value <- dog_mean_hot_dist$hot_dist
+dog_mean_hot_dist2$value <- dog_mean_hot_dist2$hot_dist
+#testing distance from source for both odors in each pattern
+anova_dist_test <- anova(lm(value~chemical*task, data = dog_mean_hot_dist))
+anova_dist_test2 <- anova(lm(value~chemical*task, data = dog_mean_hot_dist2)) # no change
+
+casting_dist_test <- t_test_sniff(dog_mean_hot_dist, "c", 4)
+casting_dist_test2 <- t_test_sniff(dog_mean_hot_dist2, "c", 4) # no change
+
+detailing_dist_test <- t_test_sniff(dog_mean_hot_dist, "o", 4)
+detailing_dist_test2 <- t_test_sniff(dog_mean_hot_dist2, "o", 4) # no change
+
+# manually testing distance in casting vs detailing for ammonia
+amm_sniff_c <- dog_mean_hot_dist$value[dog_mean_hot_dist$task == "c" & 
+                                         dog_mean_hot_dist$chemical == "Ammonia"]
+shapiro.test(amm_sniff_c)
+amm_sniff_c2 <- dog_mean_hot_dist2$value[dog_mean_hot_dist2$task == "c" & 
+                                         dog_mean_hot_dist2$chemical == "Ammonia"]
+shapiro.test(amm_sniff_c2) # no change
+
+amm_sniff_o <- dog_mean_hot_dist$value[dog_mean_hot_dist$task == "o" & 
+                                         dog_mean_hot_dist$chemical == "Ammonia"]
+shapiro.test(amm_sniff_o)
+amm_sniff_o2 <- dog_mean_hot_dist2$value[dog_mean_hot_dist2$task == "o" & 
+                                         dog_mean_hot_dist2$chemical == "Ammonia"]
+shapiro.test(amm_sniff_o2) # no change
+
+chemical_amm_dist_test <- t.test(amm_sniff_c, amm_sniff_o)
+chemical_amm_dist_test$p.value <- p.adjust(chemical_amm_dist_test$p.value, 
+                                           method = "bonferroni", n = 4)
+
+chemical_amm_dist_test2 <- t.test(amm_sniff_c2, amm_sniff_o2)
+chemical_amm_dist_test2$p.value <- p.adjust(chemical_amm_dist_test2$p.value, 
+                                           method = "bonferroni", n = 4) # no change
+
+
+# manually testing distance in casting vs detailing for 2E1H
+eh_sniff_c <- dog_mean_hot_dist$value[dog_mean_hot_dist$task == "c" & 
+                                         dog_mean_hot_dist$chemical == "2E1H"]
+shapiro.test(eh_sniff_c)
+eh_sniff_c2 <- dog_mean_hot_dist2$value[dog_mean_hot_dist2$task == "c" & 
+                                         dog_mean_hot_dist2$chemical == "2E1H"]
+shapiro.test(eh_sniff_c2) # no change
+
+eh_sniff_o <- dog_mean_hot_dist$value[dog_mean_hot_dist$task == "o" & 
+                                         dog_mean_hot_dist$chemical == "2E1H"]
+shapiro.test(eh_sniff_o)
+eh_sniff_o2 <- dog_mean_hot_dist2$value[dog_mean_hot_dist2$task == "o" & 
+                                         dog_mean_hot_dist2$chemical == "2E1H"]
+shapiro.test(eh_sniff_o2) # no change
+
+chemical_2E1H_dist_test <- t.test(eh_sniff_c, eh_sniff_o)
+chemical_2E1H_dist_test$p.value <- p.adjust(chemical_2E1H_dist_test$p.value, 
+                                           method = "bonferroni", n = 4)
+chemical_2E1H_dist_test2 <- t.test(eh_sniff_c2, eh_sniff_o2)
+chemical_2E1H_dist_test2$p.value <- p.adjust(chemical_2E1H_dist_test2$p.value, 
+                                           method = "bonferroni", n = 4) # no change
+
+
+
+# Mean time spent in casting or detailing b/w chemicals
+dog_mean_total_task_time <- dog_mean_total_task_time[dog_mean_total_task_time$trained == T,]
+remove_dogs <- which(dog_mean_total_task_time$dog == 12 | dog_mean_total_task_time$dog == 14 |
+                       dog_mean_total_task_time$dog == 24)
+dog_mean_total_task_time2 <- dog_mean_total_task_time[-remove_dogs, ]
+
+casting_tasktime_test <- t_test_sniff(dog_mean_total_task_time, "c", 4)
+casting_tasktime_test2 <- t_test_sniff(dog_mean_total_task_time2, "c", 4) # no change
+
+detailing_tasktime_test <- t_test_sniff(dog_mean_total_task_time, "o", 4)
+detailing_tasktime_test2 <- t_test_sniff(dog_mean_total_task_time2, "o", 4) # no change 
+
+anova_tasktime_test <- anova(lm(value ~ chemical * task, 
+                                data = dog_mean_total_task_time))
+anova_tasktime_test2 <- anova(lm(value ~ chemical * task, 
+                                data = dog_mean_total_task_time2)) # no change
+
+
+# Testing total time in casting versus detailing for 2E1H (significant)
+eh_cast_time <- dog_mean_total_task_time$value[dog_mean_total_task_time$task =="c" &
+                                                   dog_mean_total_task_time$chemical == "2E1H"]
+eh_cast_time2 <- dog_mean_total_task_time2$value[dog_mean_total_task_time2$task =="c" &
+                                                   dog_mean_total_task_time2$chemical == "2E1H"]
+eh_detail_time <- dog_mean_total_task_time$value[dog_mean_total_task_time$task =="o" &
+                                                   dog_mean_total_task_time$chemical == "2E1H"]
+eh_detail_time2 <- dog_mean_total_task_time2$value[dog_mean_total_task_time2$task =="o" &
+                                                   dog_mean_total_task_time2$chemical == "2E1H"]
+
+eh_cast_detail_test <- t.test(eh_cast_time, eh_detail_time)
+eh_cast_detail_test2 <- t.test(eh_cast_time2, eh_detail_time2)
+
+eh_cast_detail_test$p.value <- p.adjust(eh_cast_detail_test$p.value,
+                                           method = "bonferroni", n = 2)
+eh_cast_detail_test2$p.value <- p.adjust(eh_cast_detail_test2$p.value,
+                                           method = "bonferroni", n = 2) # no change
+
+# Testing total time in casting versus detailing for Ammonia (not significant)
+am_cast_time <- dog_mean_total_task_time$value[dog_mean_total_task_time$task =="c" &
+                                                   dog_mean_total_task_time$chemical == "Ammonia"]
+am_cast_time2 <- dog_mean_total_task_time2$value[dog_mean_total_task_time2$task =="c" &
+                                                   dog_mean_total_task_time2$chemical == "Ammonia"]
+
+am_detail_time <- dog_mean_total_task_time$value[dog_mean_total_task_time$task =="o" &
+                                                   dog_mean_total_task_time$chemical == "Ammonia"]
+am_detail_time2 <- dog_mean_total_task_time2$value[dog_mean_total_task_time2$task =="o" &
+                                                   dog_mean_total_task_time2$chemical == "Ammonia"]
+
+am_cast_detail_test <- wilcox.test(am_cast_time, am_detail_time)
+am_cast_detail_test2 <- wilcox.test(am_cast_time2, am_detail_time2)
+
+am_cast_detail_test$p.value <- p.adjust(am_cast_detail_test$p.value,
+                                           method = "bonferroni", n = 2)
+am_cast_detail_test2$p.value <- p.adjust(am_cast_detail_test2$p.value,
+                                           method = "bonferroni", n = 2) # no change
+
+# Testing 2E1H versus Ammonia for each state behavior
+dog_mean_event_times <- dog_mean_event_times[dog_mean_event_times$trained == T, ]
+remove_dogs <- which(dog_mean_event_times$dog == 12 | dog_mean_event_times$dog == 14 |
+                       dog_mean_event_times$dog == 24)
+dog_mean_event_times2 <- dog_mean_event_times[-remove_dogs, ]
+
+
+look_eventtime_test <- t_test_sniff(dog_mean_event_times, "l", 4)
+sniff_eventtime_test <- t_test_sniff(dog_mean_event_times, "s", 4)
+jump_eventtime_test <- t_test_sniff(dog_mean_event_times, "j", 4)
+paw_eventtime_test <- t_test_sniff(dog_mean_event_times, "p", 4)
+
+look_eventtime_test2 <- t_test_sniff(dog_mean_event_times2, "l", 4) # no change
+sniff_eventtime_test2 <- t_test_sniff(dog_mean_event_times2, "s", 4) # no change
+jump_eventtime_test2 <- t_test_sniff(dog_mean_event_times2, "j", 4) # no change
+paw_eventtime_test2 <- t_test_sniff(dog_mean_event_times2, "p", 4) # no change
+
+anv_task_chem_dog_times <- anova(lm(value ~ task * chemical, 
+                                    data = dog_mean_event_times))
+anv_task_chem_dog_times2 <- anova(lm(value ~ task * chemical, 
+                                    data = dog_mean_event_times2)) # no change
+
+# Testing 2E1H versus Ammonia for point behavior
+dog_point_counts <- dog_point_counts[dog_point_counts$trained == T, ]
+remove_dogs <- which(dog_point_counts$dog == 12 | dog_point_counts$dog == 14 |
+                       dog_point_counts$dog == 24)
+dog_point_counts2 <- dog_point_counts[-remove_dogs,]
+
+hturn_point_test <- t_test_sniff(na.omit(dog_point_counts), "h", 8)
+hturn_point_test2 <- t_test_sniff(na.omit(dog_point_counts2), "h", 8) # no change
+
+# Setting up matrix for fisher's exact test on alerts
+e_alerts_true <- sum(alerts$success[alerts$chemical=="2E1H"] == TRUE)
+e_alerts_false <- sum(alerts$success[alerts$chemical=="2E1H"] == FALSE)
+a_alerts_true <- sum(alerts$success[alerts$chemical=="Ammonia"] == TRUE)
+a_alerts_false <- sum(alerts$success[alerts$chemical=="Ammonia"] == FALSE)
+
+##alert test to see difference between success counts for two chemicals
+alert_mat <- matrix(c(e_alerts_true, e_alerts_false, a_alerts_true, a_alerts_false), 
+                    byrow = T, nrow = 2)
+alert_test <- fisher.test(alert_mat)
+
+
+total_search_times <- data.frame("dog" = rep(NA, 28), 
+                                 "chemical" = rep(NA, 28),
+                                 "success" = rep(NA, 28),
+                                 "value" = rep(NA, 28))
+counter <- 0
+for(i in 1:nlevels(dog_mean_total_task_time$dog)){
+  for(j in 1:nlevels(dog_mean_total_task_time$chemical)){
+    counter <- counter + 1
+    total_search_times$dog[counter] <- levels(dog_mean_total_task_time$dog)[i]
+    total_search_times$chemical[counter] <- levels(dog_mean_total_task_time$chemical)[j]
+    task_sub <- dog_mean_total_task_time[dog_mean_total_task_time$dog ==
+                                           levels(dog_mean_total_task_time$dog)[i] &
+                                           dog_mean_total_task_time$chemical == 
+                                           levels(dog_mean_total_task_time$chemical)[j], 
+                                         ]
+    total_search_times$value[counter] <- sum(task_sub$value) - 
+      task_sub$value[task_sub$task == "t"]
+    total_search_times$success[counter] <- alerts$success[ 
+      alerts$dog == levels(dog_mean_total_task_time$dog)[i] & 
+        alerts$chemical == levels(dog_mean_total_task_time$chemical)[j]]
+  }
+}
+
+#Difference b/w overall search times (non-sig)
+E_search_time <- total_search_times$value[total_search_times$chemical == "2E1H"]
+A_search_time <- total_search_times$value[total_search_times$chemical == "Ammonia"]
+total_search_test <- t.test(E_search_time, A_search_time)
+```
+
+Since some dogs were unsuccesssful during searches for both target chemicals, there is a possibility that they behaved differently than dogs that were successful during searches. In order to investigate this question, we re-ran all statistical analyses without these three dogs. 
+These updated statistical analyses do not change the significance of any comparison of the main manuscript. SI Fig. \@ref(fig:hole-times) is the main manuscript's Fig. 3 and SI Fig. \@ref(fig:indiv-behavior-times) corresponds to the main manuscript's Fig. 4 with the three unsuccessful dogs removed. For brevity, we will summarize the changes in comparisons we found significant in the full data set: 
+
+ - The difference in the distance of the nose to the target odor source was significant during casting. Welch Two Sample t-test for the full-set means: $`r round(casting_dist_test[["estimate"]][2], digits = 3)`$ m and $`r round(casting_dist_test[["estimate"]][1], digits = 3)`$ m for 2E1H and NH~3~, respectively; $t = `r round(casting_dist_test[["statistic"]], digits = 3)`$; $p = `r signif(casting_dist_test[["p.value"]], digits = 2)`$). For the set without 12, 14, and 24: $`r round(casting_dist_test2[["estimate"]][2], digits = 3)`$ m and $`r round(casting_dist_test2[["estimate"]][1], digits = 3)`$ m for 2E1H and NH~3~, respectively; $t = `r round(casting_dist_test2[["statistic"]], digits = 3)`$; $p = `r signif(casting_dist_test2[["p.value"]], digits = 2)`$).
+ - The difference in the distance of the nose to the target odor source was also significant between casting and localizing for NH~3~. Welch Two Sample t-test for the full-set means: $`r round(chemical_amm_dist_test[["estimate"]][1], digits = 2)`$ m and $`r round(chemical_amm_dist_test[["estimate"]][2], digits = 2)`$ m, for casting and localizing, respectively; $t = `r round(chemical_amm_dist_test$statistic, digits = 3)`$, $p = `r signif(chemical_amm_dist_test$p.value, digits = 2)`$. For the set without 12, 14, and 24 means:  $`r round(chemical_amm_dist_test2[["estimate"]][1], digits = 2)`$ m and $`r round(chemical_amm_dist_test2[["estimate"]][2], digits = 2)`$ m, for casting and localizing, respectively; $t = `r round(chemical_amm_dist_test2$statistic, digits = 3)`$, $p = `r signif(chemical_amm_dist_test2$p.value, digits = 2)`$.
+ - Dogs also spent a longer time engaged in localizing for NH~3~ than 2E1H. Welch Two Sample t-test for the full-set means: $`r round(detailing_tasktime_test[["estimate"]][2], digits = 2)`$ s, $`r round(detailing_tasktime_test[["estimate"]][1], digits = 2)`$ s, $p = `r round(detailing_tasktime_test[["p.value"]], digits = 3)`$). For the set without 12, 14, and 24 means: $`r round(detailing_tasktime_test2[["estimate"]][2], digits = 2)`$ s, $`r round(detailing_tasktime_test2[["estimate"]][1], digits = 2)`$ s, $p = `r round(detailing_tasktime_test2[["p.value"]], digits = 3)`$).
+ - Dogs spent significantly less time localizing 2E1H than casting for it. Welch Two Sample t-test for the full-set means: $`r round(eh_cast_detail_test[["estimate"]][2], digits = 2)`$ s, $`r round(eh_cast_detail_test[["estimate"]][1], digits = 2)`$ s, $p = `r signif(eh_cast_detail_test2$p.value, digits = 1)`$). For the set without 12, 14, and 24: $`r round(eh_cast_detail_test2[["estimate"]][2], digits = 2)`$ s, $`r round(eh_cast_detail_test2[["estimate"]][1], digits = 2)`$ s, $p = `r signif(eh_cast_detail_test2$p.value, digits = 1)`$).
+
+```{r hole-times, echo=FALSE, fig.width = 6.5, fig.height = 4.25, fig.cap="Mean distance the dogs occupied in the casting and localizing stages of search (a) as well as the mean time they spent within 10 cm of the source of each chemical (b) excluding dogs 12, 14, and 24. Single black filled circles represent outliers to the boxplot. Sample size is recorded if other than n = 11.  * represents a comparison where the p < 0.05."}
+
+p1 <- ggplot(dog_mean_hot_dist2[dog_mean_hot_dist2$task == "c" | dog_mean_hot_dist2$task == "o",], aes(task, value, fill = chemical)) + 
+  geom_boxplot() +
+  geom_point(position = position_jitterdodge(jitter.width = 0.2), pch = 21, alpha = 0.4) +
+  annotate(geom = "text", x = 0.60, y = 0.0, label = "n = ",  size = 3) +
+  #annotate(geom = "text", x = 0.85, y = 0.0, label = "11",  size = 3) +
+  annotate(geom = "text", x = 1.15, y = 0.0, label = "10",  size = 3) +
+  annotate(geom = "text", x = 1.85, y = 0.0, label = "10",  size = 3) +
+  annotate(geom = "text", x = 2.15, y = 0.0, label = "10",  size = 3) +
+  scale_fill_manual(values = c(chem_colors[1], chem_colors[2]), name = "Target odor",
+                    labels = c("2E1H", bquote(NH[3]))) +
+  annotate(geom = "text", x = 1.7, y = 1.08, label = "*",  size = 6) +
+  annotate(geom = "line", x = c(1.15, 2.25), y = c(1.03, 1.03),  linewidth = 1) +
+  annotate(geom = "text", x = 1, y = 1.15, label = "*",  size = 6) + 
+  annotate(geom = "line", x = c(0.75, 1.25), y = c(1.1,1.1), linewidth = 1) +
+  scale_x_discrete(labels = c("Casting", "Localizing")) +
+  ylab("Mean distance from target\nodor source (m)") + xlab(" ") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position="bottom")
+
+p2 <- ggplot(dog_mean_total_task_time2, aes(task, value, fill = chemical)) +
+  geom_boxplot() + 
+  geom_point(position = position_jitterdodge(jitter.width = 0.2), pch = 21, alpha = 0.4) +
+  annotate(geom = "text", x = 0.75, y = -3.5, label = "n = ",  size = 3) +
+  annotate(geom = "text", x = 3.75, y = -3.5, label = "4",  size = 3) +
+  annotate(geom = "text", x = 4.25, y = -3.5, label = "10",  size = 3) +
+  scale_fill_manual(values = c(chem_colors[1], chem_colors[2]), name = "Target odor", 
+                    guide = "none") +
+  scale_x_discrete(labels = task_labs) +
+  annotate(geom = "text", x = 3, y = 18, label = "*",  size = 6) +
+  annotate(geom = "line", x = c(2.75, 3.25), y = c(17, 17),  linewidth = 1) +
+  annotate(geom = "text", x = 2.25, y = 26, label = "*",  size = 6) +
+  annotate(geom = "line", x = c(1.75, 2.75), y = c(25, 25),  linewidth = 1) +
+  ylim(-5, 60) + 
+  ylab("Mean time spent in\nbehavioral state (s)") + xlab(" ") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position="bottom")
+
+((p1 + p2) / guide_area() )+ plot_annotation(tag_levels = "a") + 
+  plot_layout(guides = "collect", heights = c(4, 0.01)) & 
+  theme(legend.position='bottom', plot.tag = element_text(face = 'bold'))
+```
+
+```{r indiv-behavior-times, echo=FALSE, fig.width = 6.5, fig.height = 4.25, fig.cap="Mean time spent showing each of four behaviors (a) and the number of times the dogs displayed each of eight other behaviors (b) for all dogs except 12, 14, and 24."}
+
+p1 <- ggplot(na.omit(dog_mean_event_times2), aes(x=task, y=value, 
+                                           fill = chemical)) +
+  geom_boxplot() +
+  geom_point(position = position_jitterdodge(jitter.width = 0.2), pch = 21, alpha = 0.4) +
+  geom_hline(yintercept = 0, alpha = 0.5) + 
+  scale_x_discrete(labels = state_behavior_labels) +
+  scale_fill_manual(values = c(chem_colors[1], chem_colors[2]), name = "Target odor",
+                    labels = c("2E1H", bquote(NH[3]))) +
+  xlab(" ") + 
+  ylab("Time spent engaged\nin behavior (s)") +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+p2 <- ggplot(na.omit(dog_point_counts2), aes(x = task, y = value, fill = chemical)) + 
+  geom_boxplot() +
+  geom_point(position = position_jitterdodge(jitter.width = 0.2), pch = 21, alpha = 0.4) +
+  scale_x_discrete(labels = point_behavior_labels) +
+  scale_fill_manual(values = c(chem_colors[1], chem_colors[2]), name = "Target odor",
+                    labels = c("2E1H", bquote(NH[3]))) +
+  xlab(" ") + 
+  ylab("Number of\ntimes observed") +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+((p1 + p2)/ guide_area()  )+ plot_annotation(tag_levels = "a") +
+  plot_layout(guides = "collect", heights = c(4, 0.1)) & 
+  theme(legend.position='bottom', plot.tag = element_text(face = 'bold'))
+
+```
+
+\newpage
+
+### Additional Analysis: Comparing tracks for dually successful dogs (11 and 23)
+
+Two dogs (dogs 11 and 23) succeeded in alerting to both target odors. Including only two tracks for each target chemical leads to large variability in k-mean gap scores that are not reflective of a larger sample size of track points since each individual track become clearly visible. This limits the reliability of the gap scores and statistical analysis. 
+
+Qualitatively, the larger pattern of movement indicates that both casting and localizing occurred below the line of imprinting holes for both dogs. SI Figs. \@ref(fig:frontwall-casting-11-23) shows casting and \@ref(fig:frontwall-detailing-11-23) shows localizing for dogs 11 and 23. 
+
+```{r only-11-and-23, include=FALSE}
+# Remove previous selected tracks object
+rm(select_tracks)
+# Restricting the data set to only dogs 11 and 23
+select_tracks <- tracks[tracks$dog == 11 | tracks$dog == 23,]
+```
+
+```{r k-mean-calcs-11-23, include=FALSE}
+# K means clustering analysis
+set.seed(15)
+scaled_tracks <- na.omit(select_tracks[select_tracks$point == "nose", c("x","y","z","task","run")])
+scaled_tracks$x <- (scaled_tracks$x - min(scaled_tracks$x))/(max(scaled_tracks$x)-min(scaled_tracks$x))
+scaled_tracks$y <- (scaled_tracks$y - min(scaled_tracks$y))/(max(scaled_tracks$y)-min(scaled_tracks$y))
+scaled_tracks$z <- (scaled_tracks$z - min(scaled_tracks$z))/(max(scaled_tracks$z)-min(scaled_tracks$z))
+
+cluster_2E1H_casting <- calc_kmeans(scaled_tracks, 1, "c", 5)
+cluster_2E1H_detailing <- calc_kmeans(scaled_tracks, 1, "o", 5)
+cluster_Amm_casting <- calc_kmeans(scaled_tracks, 2, "c", 5)
+cluster_Amm_detailing <- calc_kmeans(scaled_tracks, 2, "o", 5)
+```
+
+```{r data-setup-density-plots-11-23, include=FALSE}
+dat_2E1H_casting <- na.omit(select_tracks[select_tracks$point == "nose" & select_tracks$run == 1 & 
+                                     select_tracks$task == "c",])
+dat_2E1H_casting$cluster <- factor(cluster_2E1H_casting$cluster_points)
+
+dat_2E1H_detailing <- na.omit(select_tracks[select_tracks$point == "nose" & select_tracks$run == 1 & 
+                                       select_tracks$task == "o",])
+dat_2E1H_detailing$cluster <- factor(cluster_2E1H_detailing$cluster_points)
+
+dat_Amm_casting <- na.omit(select_tracks[select_tracks$point == "nose" & select_tracks$run == 2 & 
+                                    select_tracks$task == "c",])
+dat_Amm_casting$cluster <- factor(cluster_Amm_casting$cluster_points)
+
+dat_Amm_detailing <- na.omit(select_tracks[select_tracks$point == "nose" & select_tracks$run == 2 & 
+                                      select_tracks$task == "o",])
+dat_Amm_detailing$cluster <- factor(cluster_Amm_detailing$cluster_points)
+```
+
+```{r frontwall-casting-11-23, fig.cap="Point-density plots (a and b) and k-means clustering plots (c and d) of the front view of trial wall during casting stage for 2E1H (a, c) and NH~3~ (b, d) for only dogs 11 and 23. Location of imprinting source holes marked with colored circles (red indicates location of target odorant, blue are distractors, gray is blank).", echo=FALSE, warning=FALSE}
+
+
+
+
+p2E1H_casting_density <- point_density_plot(dat_2E1H_casting, trial_holes,
+                                           "x", "z", 
+                                           10,"2E1H", "2E1H")
+pAmm_casting_density <- point_density_plot(dat_Amm_casting, trial_holes,
+                                           "x", "z", 
+                                           10,"NH3", bquote(NH[3]))
+
+
+p2E1H_casting_cluster <- cluster_plot(dat_2E1H_casting, trial_holes, 
+                                      "x", "z", 
+                                      "2E1H")
+
+pAmm_casting_cluster <- cluster_plot(dat_Amm_casting, trial_holes, 
+                                     "x", "z", 
+                                     "NH3")
+
+  
+( p2E1H_casting_density + pAmm_casting_density ) /
+  ( p2E1H_casting_cluster + pAmm_casting_cluster ) +
+  plot_annotation(tag_levels = "a") + 
+  theme(plot.tag = element_text(face = 'bold')) +
+  plot_layout(guides = "collect")
+
+```
+
+```{r frontwall-detailing-11-23, fig.cap="Point-density plots (a and b) and k-means clustering plots (c and d) of the front view of trial wall during localizing stage for 2E1H (a, c) and NH~3~ (b, d) for only dogs 11 and 23. Location of imprinting source holes marked with colored circles (red indicates location of target odorant, blue are distractors, gray is blank).", echo=FALSE, warning=FALSE}
+
+p2E1H_detailing_density <- point_density_plot(dat_2E1H_detailing, trial_holes, 
+                                              "x", "z", 
+                                              18,"2E1H","2E1H")
+
+pAmm_detailing_density <- point_density_plot(dat_Amm_detailing, trial_holes, 
+                                              "x", "z", 
+                                              18,bquote(NH[3]))
+
+p2E1H_detailing_cluster <- cluster_plot(dat_2E1H_detailing, trial_holes, 
+                                        "x", "z",
+                                       "2E1H") 
+
+pAmm_detailing_cluster <- cluster_plot(dat_Amm_detailing, trial_holes, 
+                                       "x", "z",
+                                       "NH3") 
+  
+( p2E1H_detailing_density + pAmm_detailing_density ) /
+  ( p2E1H_detailing_cluster + pAmm_detailing_cluster ) + 
+  plot_annotation(tag_levels = "a") + 
+  theme(plot.tag = element_text(face = 'bold')) +
+  plot_layout(guides = "collect")
+
+```
+
+\newpage
+
+### Additional Analysis: Visualizing tracks of individual searches
+
+SI Figs. \@ref(fig:dog-1) through \@ref(fig:dog-24) present the individual kinematic tracks of the nose for each chemical. The shape of points indicate the task that the dog was engaged in at the time. The color of the path and points progresses from dark blue (at the start) to light blue (at the end) of the track in time. All points within the run are connected, leading to some discontinuity with large lines between sections of the wall. In this case, the dogs often leave the frame of the video and then return at a different position. 
+
+Each figure includes the dog's number, runs for each target chemical, and a note on if the search was successful (dog displayed final alert behavior on the correct source hole) or unsuccessful.
+
+
+```{r dog-1, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 1 for both target chemicals."}
+single_dog_track(tracks, 1, 1, "x", "z") /
+  single_dog_track(tracks, 1, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-2, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 2 for both target chemicals."}
+single_dog_track(tracks, 2, 1, "x", "z") /
+  single_dog_track(tracks, 2, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-9, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 9 for both target chemicals."}
+single_dog_track(tracks, 9, 1, "x", "z") /
+  single_dog_track(tracks, 9, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-11, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 11 for both target chemicals."}
+single_dog_track(tracks, 11, 1, "x", "z") /
+  single_dog_track(tracks, 11, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-12, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 12 for both target chemicals."}
+single_dog_track(tracks, 12, 1, "x", "z") /
+  single_dog_track(tracks, 12, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-14, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 14 for both target chemicals."}
+single_dog_track(tracks, 14, 1, "x", "z") /
+  single_dog_track(tracks, 14, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-15, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 15 for both target chemicals."}
+single_dog_track(tracks, 15, 1, "x", "z") /
+  single_dog_track(tracks, 15, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-17, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 17 for both target chemicals."}
+single_dog_track(tracks, 17, 1, "x", "z") /
+  single_dog_track(tracks, 17, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-19, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 19 for both target chemicals."}
+single_dog_track(tracks, 19, 1, "x", "z") /
+  single_dog_track(tracks, 19, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-20, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 20 for both target chemicals."}
+single_dog_track(tracks, 20, 1, "x", "z") /
+  single_dog_track(tracks, 20, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+
+```{r dog-21, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 21 for both target chemicals."}
+single_dog_track(tracks, 21, 1, "x", "z") /
+  single_dog_track(tracks, 21, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+```{r dog-22, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 22 for both target chemicals."}
+single_dog_track(tracks, 22, 1, "x", "z") /
+  single_dog_track(tracks, 22, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+```{r dog-23, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 23 for both target chemicals."}
+single_dog_track(tracks, 23, 1, "x", "z") /
+  single_dog_track(tracks, 23, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+```{r dog-24, echo=FALSE, warning=FALSE, message=FALSE, fig.height=9, fig.width=7, fig.cap = "Kinematic tracks of dog 24 for both target chemicals."}
+single_dog_track(tracks, 24, 1, "x", "z") /
+  single_dog_track(tracks, 24, 2, "x", "z") +
+  plot_layout(guides="collect")
+```
+
+
+\newpage
 
 ## References
 
