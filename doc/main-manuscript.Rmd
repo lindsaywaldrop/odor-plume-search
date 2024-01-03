@@ -15,7 +15,6 @@ csl: scientific-reports.csl
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.width = 8)
-knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 options(knitr.graphics.error = FALSE)
 ```
  
@@ -413,7 +412,7 @@ pAmm_casting_cluster <- cluster_plot(dat_Amm_casting, trial_holes,
 ```
 
 
-The casting stage describes the active search of a dog at the edge of a plume before it begins localizing to narrow down the search field to the odor's source. It often involves larger movements and more changes of direction in order to cover a larger area and encounter infrequent odor signals. During casting, dogs approached the wall and worked between 0.2 and 1 m away from the wall. Fig. \@ref(fig:frontwall-casting) show the density maps of casting across all runs for both target odors. The patterns between the target odors differed significantly, with a difference in the distance of the nose to the target odor source (Fig. \@ref(fig:hole-times)A, means: $`r round(casting_dist_test[["estimate"]][2], digits = 3)`$ m and $`r round(casting_dist_test[["estimate"]][1], digits = 3)`$ m for 2E1H and NH~3~, respectively; $t = `r round(casting_dist_test[["statistic"]], digits = 3)`$; $p = `r signif(casting_dist_test[["p.value"]], digits = 2)`$). The time spent engaging in casting, however, did not differ. Casting occurred further from the face of the wall and spread across the face of the wall (Fig. \@ref(fig:frontwall-casting)). K-mean gap scores for clusters were overall low for both 2E1H (`r round(cluster_2E1H_casting$cluster_data$gap, digits = 2)`) and NH~3~ (`r round(cluster_Amm_casting$cluster_data$gap, digits = 2)`). 
+The casting stage describes the active search of a dog at the edge of a plume before it begins localizing to narrow down the search field to the odor's source. It often involves larger movements and more changes of direction in order to cover a larger area and encounter infrequent odor signals. During casting, dogs approached the wall and worked between 0.2 and 1 m away from the wall. Fig. \@ref(fig:frontwall-casting) show the density maps of casting across all runs for both target odors. The distances of the dogs' noses to the target odor source differed significantly (Fig. \@ref(fig:hole-times)A, means: $`r round(casting_dist_test[["estimate"]][2], digits = 3)`$ m and $`r round(casting_dist_test[["estimate"]][1], digits = 3)`$ m for 2E1H and NH~3~, respectively; $t = `r round(casting_dist_test[["statistic"]], digits = 3)`$; $p = `r signif(casting_dist_test[["p.value"]], digits = 2)`$). The time spent engaging in casting, however, did not differ. Casting occurred further from the face of the wall and spread across the face of the wall (Fig. \@ref(fig:frontwall-casting)). K-mean gap scores for clusters were overall low for both 2E1H (`r round(cluster_2E1H_casting$cluster_data$gap, digits = 2)`) and NH~3~ (`r round(cluster_Amm_casting$cluster_data$gap, digits = 2)`). 
 
 ```{r hole-times, echo=FALSE, fig.width = 6.5, fig.height = 4.25, fig.cap="Mean distance the dogs occupied in the casting and localizing stages of search (a) as well as the mean time they spent within 10 cm of the source of each chemical (b). Single black filled circles represent outliers to the box plot. Sample size is noted along the bottom line if other than n = 14. * represents a comparison where the p < 0.05."}
 

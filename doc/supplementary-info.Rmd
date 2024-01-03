@@ -10,7 +10,6 @@ output:
       in_header: header.tex
     number_sections: false
     toc: false
-    keep_tex: yes
 bibliography: references.bib
 csl: scientific-reports.csl
 ---
@@ -20,7 +19,6 @@ library(knitr)
 library(tidyr)
 library(kableExtra)
 knitr::opts_chunk$set(echo = TRUE, fig.width=8)
-knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 options(knitr.graphics.error = FALSE)
 wd <- getwd()
 filepath1 <- file.path(here::here(), "figures", "Trialbox1.png")
@@ -117,10 +115,6 @@ Fourteen civilian canines were recruited through the National Association of Can
 
 Three small dogs ($< 30$ lbs) and eleven large dogs ($\geq 30$ lbs) were included of all different breeds (Table \@ref(tab:breed-table)). The handlers were not compensated for participation. The study observed all federal, state, and local regulations on the use of vertebrate animals in research (FIU IACUC protocol #201314).
 
-### Training 
-
-During the training period, handlers logged the time in which they used each COMPS and were instructed to throw away the COMPS and open a new one after it was exposed to the air for a total of six hours. Handler-dog teams were given six weeks to train with the COMPS before participating in the trials. Each handler-dog team trained individually as they would for typical Nosework odor competitions.
-
 ```{r breed-table, echo=FALSE}
 column_names <- c("Dog number", "Breed", "Weight (lbs)")
 breed_data <- read.csv("./data/kinematics/dog_sizes.csv")
@@ -133,6 +127,11 @@ kable(breed_data, "simple", col.names = column_names,
 ```
 
 
+### Training 
+
+During the training period, handlers logged the time in which they used each COMPS and were instructed to throw away the COMPS and open a new one after it was exposed to the air for a total of six hours. Handler-dog teams were given six weeks to train with the COMPS before participating in the trials. Each handler-dog team trained individually as they would for typical Nosework odor competitions.
+
+
 ### Experimental Setup and Procedure
 
 The trial was held in Huntington Beach, California in February, 2023 at a dog training facility (The Hounds Grounds). The trial was held during the morning, which was cloudy and rainy (temperature 17$^{\circ}$C, 80% relative humidity). All HVAC remained off during the duration of the experiment such that the inside conditions were consistent with the outside conditions in terms of temperature and humidity. The main search area was separated from the front door by a four-foot high wooden wall, which limited much air movement in the main area when the outer doors opened and closed. Temperature, humidity, and wind conditions varied little during the three hours the trials were held.
@@ -141,16 +140,16 @@ Two plywood trials walls were set up in the middle of each location (Figure \@re
 
 COMPS were placed in the imprinting devices five to ten minutes before dogs were allowed to interact with the wall. Dogs were then run consecutively. No special effort was made to reset or control the odor plume from the wall between dogs. After each run with a target odor, distracting-odor COMPS were replaced. The white, PVC cap and ABS imprinting hole were replaced between 2E1H and NH3 to limit cross-contamination between target odors. A 15- to 20-minute period between runs with each target odor was given to allow the previous odor plumes to dissipate. 
 
-Dogs were allowed to search a similar imprinting wall with a Nosework odor source before and after each experimental run. Each dog was sent to their corresponding wall twice, once where the target odor was NH~3~ and the other when it was 2E1H. Two observers remained behind the dog and handler dyad while they were sent to the corresponding wall to note observations and to coach the handler, if needed. The handlers were blind to which hole contained the target odor. The handler was instructed to search the wall and indicate if their dog alerted to the location of the odor source. Once the dog had searched the wall and either alerted to the target odor or had worked the wall sufficiently, the dog-handler team was exited the facility. To assess whether the dogs were more successful at locating one odor or another, the successful versus unsuccessful alerts were noted by both observers during each run.
+Dogs were allowed to search a similar imprinting wall with a nose work odor (birch oil) source before and after each experimental run. Each dog was sent to their corresponding wall twice, once where the target odor was NH~3~ and the other when it was 2E1H. Two observers remained behind the dog and handler dyad while they were sent to the corresponding wall to note observations and to coach the handler, if needed. The handlers were blind to which hole contained the target odor. The handler was instructed to search the wall and indicate if their dog alerted to the location of the odor source. Once the dog had searched the wall and either alerted to the target odor or had worked the wall sufficiently, the dog-handler team was exited the facility. To assess whether the dogs were more successful at locating one odor or another, the successful versus unsuccessful alerts were noted by both observers during each run.
 
 
 ```{r trial-box, echo=FALSE, out.width="95%", fig.cap="Trial walls used for the experiment showing the relative placement of imprinting holes. Left: large wall, right: small wall. Left image shows side and top camera set up for capturing video data. Leashed dogs were allowed to interact with the wall freely. Photos by Monica Moljo."}
-include_graphics(file.path(here::here(), "doc", "figures","trialbox2.png"))
+include_graphics(file.path(here::here(), "doc", "kinematics-paper", "figures","trialbox2.png"))
 #include_graphics(file.path(here::here(), "doc", "kinematics-paper", "figures","small_trial_box.png"))
 ```
 
 ```{r top-side-view, echo=FALSE, out.width="95%", fig.cap="Side (left) and top (right) views of the cameras during a search."}
-include_graphics(file.path(here::here(), "doc", "figures","top-side-view.png"))
+include_graphics(file.path(here::here(), "doc", "kinematics-paper", "figures","top-side-view.png"))
 ```
 
 Two video cameras (GoPro Hero 8 Black, GoPro, San Mateo, CA) were placed in view of the front of the wall where dogs interacted with odors, one above the holes and one to the right side of the trial wall, resulting in a top view and side view, respectively (Figure \@ref(fig:top-side-view)). Cameras were placed in linear mode using 30 frames per second to record at 4K resolution. Cameras ran continuously for the time that the dogs interacted with the wall area. Videos were calibrated with a three-dimensional calibration object on sight immediately before running dogs in the trial and for each wall (large and small). Cameras were synced using a verbal cue and aligned using iMovie during analysis. Calibration footage was taken each time the cameras were initially set up or moved. 
